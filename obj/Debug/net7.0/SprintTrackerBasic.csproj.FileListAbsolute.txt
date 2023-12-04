@@ -1,0 +1,14 @@
+C:\SWENG-421-LABS\Final-Project-Sprint-Tracker\SprintTrackerBasic\obj\Debug\net7.0\SprintTrackerBasic.GeneratedMSBuildEditorConfig.editorconfig
+C:\SWENG-421-LABS\Final-Project-Sprint-Tracker\SprintTrackerBasic\obj\Debug\net7.0\SprintTrackerBasic.AssemblyInfoInputs.cache
+C:\SWENG-421-LABS\Final-Project-Sprint-Tracker\SprintTrackerBasic\obj\Debug\net7.0\SprintTrackerBasic.AssemblyInfo.cs
+C:\SWENG-421-LABS\Final-Project-Sprint-Tracker\SprintTrackerBasic\obj\Debug\net7.0\SprintTrackerBasic.csproj.CoreCompileInputs.cache
+C:\SWENG-421-LABS\Final-Project-Sprint-Tracker\SprintTrackerBasic\bin\Debug\net7.0\SprintTrackerBasic.exe
+C:\SWENG-421-LABS\Final-Project-Sprint-Tracker\SprintTrackerBasic\bin\Debug\net7.0\SprintTrackerBasic.deps.json
+C:\SWENG-421-LABS\Final-Project-Sprint-Tracker\SprintTrackerBasic\bin\Debug\net7.0\SprintTrackerBasic.runtimeconfig.json
+C:\SWENG-421-LABS\Final-Project-Sprint-Tracker\SprintTrackerBasic\bin\Debug\net7.0\SprintTrackerBasic.dll
+C:\SWENG-421-LABS\Final-Project-Sprint-Tracker\SprintTrackerBasic\bin\Debug\net7.0\SprintTrackerBasic.pdb
+C:\SWENG-421-LABS\Final-Project-Sprint-Tracker\SprintTrackerBasic\obj\Debug\net7.0\SprintTrackerBasic.dll
+C:\SWENG-421-LABS\Final-Project-Sprint-Tracker\SprintTrackerBasic\obj\Debug\net7.0\refint\SprintTrackerBasic.dll
+C:\SWENG-421-LABS\Final-Project-Sprint-Tracker\SprintTrackerBasic\obj\Debug\net7.0\SprintTrackerBasic.pdb
+C:\SWENG-421-LABS\Final-Project-Sprint-Tracker\SprintTrackerBasic\obj\Debug\net7.0\SprintTrackerBasic.genruntimeconfig.cache
+C:\SWENG-421-LABS\Final-Project-Sprint-Tracker\SprintTrackerBasic\obj\Debug\net7.0\ref\SprintTrackerBasic.dll
