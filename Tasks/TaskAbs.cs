@@ -10,23 +10,28 @@ namespace SprintTrackerBasic.Tasks
     {
         private int id;
 
-        public string Name { get; set; }
+        public string name { get; set; }
 
-        public TaskAbs Parent { get; set; }
-        public List<TaskAbs> Children { get; } = new List<TaskAbs>();
+        public TaskAbs parent { get; set; }
+        public List<TaskAbs> children { get; } = new List<TaskAbs>();
 
         public TaskAbs(string name)
         {
-            this.Name = name;
+            this.name = name;
+        }
+
+        public string GetName()
+        {
+            return name;
         }
 
         public int GetId()
         {
             if (this.id == 0)
             {
-                this.id = this.Parent == null
+                this.id = this.parent == null
                   ? TaskIdGenerator.GenerateRootId()
-                  : TaskIdGenerator.GenerateId(this.Parent.id);
+                  : TaskIdGenerator.GenerateId(this.parent.id);
             }
 
             return this.id;
@@ -34,8 +39,8 @@ namespace SprintTrackerBasic.Tasks
 
         public void AddChild(TaskAbs child)
         {
-            child.Parent = this;
-            this.Children.Add(child);
+            child.parent = this;
+            this.children.Add(child);
         }
 
         public abstract void Display();

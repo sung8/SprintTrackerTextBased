@@ -13,9 +13,9 @@ namespace SprintTrackerBasic.Tasks
         public override void Display()
         {
             Console.WriteLine($"ID: {this.GetId()}");
-            Console.WriteLine($"Name: {this.Name}");
+            Console.WriteLine($"Name: {this.name}");
 
-            foreach (var child in this.Children)
+            foreach (var child in this.children)
                 child.Display();
         }
 

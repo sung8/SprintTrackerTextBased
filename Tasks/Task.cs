@@ -13,7 +13,7 @@ namespace SprintTrackerBasic.Tasks
         public override void Display()
         {
             Console.WriteLine($"ID: {this.GetId()}");
-            Console.WriteLine($"Name: {this.Name}");
+            Console.WriteLine($"Name: {this.name}");
         }
     }
 }
