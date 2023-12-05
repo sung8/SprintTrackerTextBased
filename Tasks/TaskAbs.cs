@@ -1,4 +1,5 @@
-﻿using System;
+﻿using SprintTrackerBasic.Users;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -9,24 +10,38 @@ namespace SprintTrackerBasic.Tasks
     public abstract class TaskAbs
     {
         private int id;
+        public string name { get; set; }
+        public TaskAbs parent { get; set; }
+        public List<TaskAbs> children { get; } = new List<TaskAbs>();
+        protected TeamMember assignedMember;
 
-        public string Name { get; set; }
-
-        public TaskAbs Parent { get; set; }
-        public List<TaskAbs> Children { get; } = new List<TaskAbs>();
 
         public TaskAbs(string name)
         {
-            this.Name = name;
+            this.name = name;
         }
 
+        public TaskAbs(string name, TeamMember member)
+        {
+            this.name = name;
+            this.assignedMember = member;
+        }
+
+        public string GetName()
+        {
+            return this.name;
+        }
+        public TeamMember GetTeamMember()
+        {
+            return this.assignedMember;
+        }
         public int GetId()
         {
             if (this.id == 0)
             {
-                this.id = this.Parent == null
+                this.id = this.parent == null
                   ? TaskIdGenerator.GenerateRootId()
-                  : TaskIdGenerator.GenerateId(this.Parent.id);
+                  : TaskIdGenerator.GenerateId(this.parent.id);
             }
 
             return this.id;
@@ -34,8 +49,8 @@ namespace SprintTrackerBasic.Tasks
 
         public void AddChild(TaskAbs child)
         {
-            child.Parent = this;
-            this.Children.Add(child);
+            child.parent = this;
+            this.children.Add(child);
         }
 
         public abstract void Display();
