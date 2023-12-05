@@ -136,6 +136,7 @@
             Controls.Add(button1);
             Name = "ToDoView";
             Text = "ToDoView";
+
             ResumeLayout(false);
             PerformLayout();
         }
