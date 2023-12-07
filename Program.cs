@@ -14,10 +14,10 @@ namespace SprintTrackerBasic
 
             // Create two sub tasks
             var task1 = new Tasks.Task("Task 1");
-            root1.AddSubTask(task1);
+            root1.AddSubtask(task1);
 
             var task2 = new Tasks.Task("Task 2");
-            root1.AddSubTask(task2);
+            root1.AddSubtask(task2);
 
             // Display
             root1.Display();
@@ -34,15 +34,15 @@ namespace SprintTrackerBasic
 
             // Level 2
             var child1 = new TaskComposite("Child 1");
-            root2.AddSubTask(child1);
+            root2.AddSubtask(child1);
 
             // Level 3 
             var grandChild1 = new TaskComposite("GrandChild 1");
-            child1.AddSubTask(grandChild1);
+            child1.AddSubtask(grandChild1);
 
             // Level 4
             var greatGrandChild = new Tasks.Task("Great Grand Child");
-            grandChild1.AddSubTask(greatGrandChild);
+            grandChild1.AddSubtask(greatGrandChild);
 
             // Display structure
             root2.Display();

@@ -19,7 +19,7 @@ namespace SprintTrackerBasic.Tasks
                 child.Display();
         }
 
-        public void AddSubTask(TaskAbs subTask)
+        public void AddSubtask(TaskAbs subTask)
         {
             this.AddChild(subTask);
         }

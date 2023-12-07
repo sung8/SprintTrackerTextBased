@@ -1,4 +1,5 @@
-﻿using SprintTrackerBasic.Users;
+﻿using SprintTrackerBasic.Tasks;
+using SprintTrackerBasic.Users;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -39,6 +40,25 @@ namespace SprintTrackerBasic
             listBox3.Items.Add(team1.members[0].id + " " + team1.members[0].name);
         }
 
+        private void listBox1_MouseDoubleClick(object sender, MouseEventArgs e)
+        {
+            // Level 1
+            var root2 = new TaskComposite("Root");
 
+            // Level 2
+            var child1 = new TaskComposite("Child 1");
+            root2.AddSubtask(child1);
+
+            // Level 3 
+            var grandChild1 = new TaskComposite("GrandChild 1");
+            child1.AddSubtask(grandChild1);
+
+            // Level 4
+            var greatGrandChild = new Tasks.Task("Great Grand Child");
+            grandChild1.AddSubtask(greatGrandChild);
+
+            var details = new TaskDetails((Task)root2);
+            details.Show();
+        }
     }
 }
