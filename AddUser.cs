@@ -41,13 +41,13 @@ namespace SprintTrackerBasic
         {
             if (!string.IsNullOrEmpty(memberName) && memberId >= 0 && !string.IsNullOrEmpty(teamName))
             {
-                ViewOrganizer vo = ViewOrganizer.getInstance();
+                ViewOrganizer vo = ViewOrganizer.GetInstance();
                 Users.Team existingTeam = null;
-                for (int i = 0; i < vo.getTeams().Count; i++)
+                for (int i = 0; i < vo.GetTeams().Count; i++)
                 {
-                    if (vo.getTeams()[i].name == teamName)
+                    if (vo.GetTeams()[i].name == teamName)
                     {
-                        existingTeam = vo.getTeams()[i];
+                        existingTeam = vo.GetTeams()[i];
                         break;
                     }
                 }
@@ -58,8 +58,8 @@ namespace SprintTrackerBasic
                 else
                 {
                     Users.Team newTeam = new Users.Team(teamId, teamName);
-                    newTeam.AddTeamMember(new Users.TeamMember(memberId, memberName));
-                    vo.getTeams().Add(newTeam);
+                    newTeam.AddTeamMember(new Users.TeamMember(memberId, memberName, newTeam));
+                    vo.GetTeams().Add(newTeam);
                    
                 }
                 this.Close();

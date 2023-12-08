@@ -8,6 +8,6 @@ namespace SprintTrackerBasic.Tasks
 {
     public interface ITaskComponent
     {
-        public void Display();
+        //public void Display();
     }
 }

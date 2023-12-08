@@ -6,9 +6,8 @@ using System.Threading.Tasks;
 
 namespace SprintTrackerBasic.Builder
 {
-    public interface TaskBuilderIF
+    public class TaskBuilder: AbsTaskBuilder
     {
-        public TaskBuilderIF GetTaskBuilder(string info);
-
+        public TaskBuilder() { }
     }
 }

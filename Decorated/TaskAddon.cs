@@ -4,11 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace SprintTrackerBasic.Builder
+namespace SprintTrackerBasic.Decorated
 {
-    public interface TaskBuilderIF
+    public interface TaskAddon
     {
-        public TaskBuilderIF GetTaskBuilder(string info);
-
     }
 }

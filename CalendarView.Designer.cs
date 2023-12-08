@@ -37,20 +37,6 @@
             label5 = new Label();
             label6 = new Label();
             label7 = new Label();
-            treeView1 = new TreeView();
-            treeView2 = new TreeView();
-            treeView3 = new TreeView();
-            treeView4 = new TreeView();
-            treeView5 = new TreeView();
-            treeView6 = new TreeView();
-            treeView7 = new TreeView();
-            treeView8 = new TreeView();
-            treeView9 = new TreeView();
-            treeView10 = new TreeView();
-            treeView11 = new TreeView();
-            treeView12 = new TreeView();
-            treeView13 = new TreeView();
-            treeView14 = new TreeView();
             label8 = new Label();
             label9 = new Label();
             label10 = new Label();
@@ -160,104 +146,6 @@
             label7.Size = new Size(53, 28);
             label7.TabIndex = 25;
             label7.Text = "Date";
-            // 
-            // treeView1
-            // 
-            treeView1.Location = new Point(23, 205);
-            treeView1.Name = "treeView1";
-            treeView1.Size = new Size(104, 109);
-            treeView1.TabIndex = 26;
-            // 
-            // treeView2
-            // 
-            treeView2.Location = new Point(146, 205);
-            treeView2.Name = "treeView2";
-            treeView2.Size = new Size(104, 109);
-            treeView2.TabIndex = 27;
-            // 
-            // treeView3
-            // 
-            treeView3.Location = new Point(271, 205);
-            treeView3.Name = "treeView3";
-            treeView3.Size = new Size(104, 109);
-            treeView3.TabIndex = 28;
-            // 
-            // treeView4
-            // 
-            treeView4.Location = new Point(399, 205);
-            treeView4.Name = "treeView4";
-            treeView4.Size = new Size(104, 109);
-            treeView4.TabIndex = 29;
-            // 
-            // treeView5
-            // 
-            treeView5.Location = new Point(526, 205);
-            treeView5.Name = "treeView5";
-            treeView5.Size = new Size(104, 109);
-            treeView5.TabIndex = 30;
-            // 
-            // treeView6
-            // 
-            treeView6.Location = new Point(650, 205);
-            treeView6.Name = "treeView6";
-            treeView6.Size = new Size(104, 109);
-            treeView6.TabIndex = 31;
-            // 
-            // treeView7
-            // 
-            treeView7.Location = new Point(779, 205);
-            treeView7.Name = "treeView7";
-            treeView7.Size = new Size(104, 109);
-            treeView7.TabIndex = 32;
-            // 
-            // treeView8
-            // 
-            treeView8.Location = new Point(779, 378);
-            treeView8.Name = "treeView8";
-            treeView8.Size = new Size(104, 109);
-            treeView8.TabIndex = 39;
-            // 
-            // treeView9
-            // 
-            treeView9.Location = new Point(650, 378);
-            treeView9.Name = "treeView9";
-            treeView9.Size = new Size(104, 109);
-            treeView9.TabIndex = 38;
-            // 
-            // treeView10
-            // 
-            treeView10.Location = new Point(526, 378);
-            treeView10.Name = "treeView10";
-            treeView10.Size = new Size(104, 109);
-            treeView10.TabIndex = 37;
-            // 
-            // treeView11
-            // 
-            treeView11.Location = new Point(399, 378);
-            treeView11.Name = "treeView11";
-            treeView11.Size = new Size(104, 109);
-            treeView11.TabIndex = 36;
-            // 
-            // treeView12
-            // 
-            treeView12.Location = new Point(271, 378);
-            treeView12.Name = "treeView12";
-            treeView12.Size = new Size(104, 109);
-            treeView12.TabIndex = 35;
-            // 
-            // treeView13
-            // 
-            treeView13.Location = new Point(146, 378);
-            treeView13.Name = "treeView13";
-            treeView13.Size = new Size(104, 109);
-            treeView13.TabIndex = 34;
-            // 
-            // treeView14
-            // 
-            treeView14.Location = new Point(23, 378);
-            treeView14.Name = "treeView14";
-            treeView14.Size = new Size(104, 109);
-            treeView14.TabIndex = 33;
             // 
             // label8
             // 
@@ -418,20 +306,6 @@
             Controls.Add(label10);
             Controls.Add(label9);
             Controls.Add(label8);
-            Controls.Add(treeView8);
-            Controls.Add(treeView9);
-            Controls.Add(treeView10);
-            Controls.Add(treeView11);
-            Controls.Add(treeView12);
-            Controls.Add(treeView13);
-            Controls.Add(treeView14);
-            Controls.Add(treeView7);
-            Controls.Add(treeView6);
-            Controls.Add(treeView5);
-            Controls.Add(treeView4);
-            Controls.Add(treeView3);
-            Controls.Add(treeView2);
-            Controls.Add(treeView1);
             Controls.Add(label7);
             Controls.Add(label6);
             Controls.Add(label5);
@@ -459,20 +333,6 @@
         private Label label5;
         private Label label6;
         private Label label7;
-        private TreeView treeView1;
-        private TreeView treeView2;
-        private TreeView treeView3;
-        private TreeView treeView4;
-        private TreeView treeView5;
-        private TreeView treeView6;
-        private TreeView treeView7;
-        private TreeView treeView8;
-        private TreeView treeView9;
-        private TreeView treeView10;
-        private TreeView treeView11;
-        private TreeView treeView12;
-        private TreeView treeView13;
-        private TreeView treeView14;
         private Label label8;
         private Label label9;
         private Label label10;

@@ -4,11 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace SprintTrackerBasic.Builder
+namespace SprintTrackerBasic.Tasks
 {
-    public interface TaskBuilderIF
+    public interface IDayComponent: ISprintComponent
     {
-        public TaskBuilderIF GetTaskBuilder(string info);
-
     }
 }

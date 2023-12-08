@@ -1,4 +1,5 @@
-﻿using System;
+﻿using SprintTrackerBasic.Users;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -12,9 +13,11 @@ namespace SprintTrackerBasic
 {
     public partial class TaskCreator : Form
     {
-        private string taskName;
+        private string taskName = "";
         private DateTime dueDate;
-        private string desc;
+        private string desc ="";
+        private List<Users.TeamMember> assigned = new List<Users.TeamMember>();
+        ViewOrganizer vo = ViewOrganizer.GetInstance();
         public TaskCreator()
         {
             InitializeComponent();
@@ -55,10 +58,24 @@ namespace SprintTrackerBasic
 
         private void button4_Click(object sender, EventArgs e)
         {
-            AssignUser au = new AssignUser();
+            AssignUser au = new AssignUser(this);
             this.Enabled = false;
             au.ShowDialog();
             this.Enabled = true;
+        }
+
+        public void AddingUser(TeamMember m)
+        {
+            if (!assigned.Contains(m))
+            {
+                listBox1.Items.Add("Name: " + m.name + ", Team: " + m.assignedTeam.name);
+                assigned.Add(m);
+            }
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+           
         }
     }
 }

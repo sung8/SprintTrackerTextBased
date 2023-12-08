@@ -156,6 +156,7 @@
             button3.TabIndex = 17;
             button3.Text = "Create Task";
             button3.UseVisualStyleBackColor = false;
+            button3.Click += button3_Click;
             // 
             // comboBox2
             // 
@@ -192,7 +193,7 @@
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(549, 585);
+            ClientSize = new Size(552, 600);
             Controls.Add(button4);
             Controls.Add(listBox1);
             Controls.Add(comboBox2);

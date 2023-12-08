@@ -26,7 +26,7 @@ namespace SprintTrackerBasic
             this.Enabled = false;
             tc.ShowDialog();
             this.Enabled = true;
-            
+
             Tasks.Task t1 = new Tasks.Task("hello");
             listBox1.Items.Add(t1.GetId() + " " + t1.GetName());
         }

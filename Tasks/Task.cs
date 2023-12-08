@@ -6,9 +6,17 @@ using System.Threading.Tasks;
 
 namespace SprintTrackerBasic.Tasks
 {
-    public class Task : TaskAbs, ITaskComponent
+    public class Task : TaskAbs
     {
-        public Task(string name) : base(name) { }
+        public Task(string tname): base(tname)
+        {
+            this.SetId();
+        }
+
+        public override void Iterate()
+        {
+            // Tasks have no children - do nothing
+        }
 
         public override void Display()
         {

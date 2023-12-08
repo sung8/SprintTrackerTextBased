@@ -32,6 +32,7 @@
             label2 = new Label();
             comboBox2 = new ComboBox();
             comboBox1 = new ComboBox();
+            button3 = new Button();
             SuspendLayout();
             // 
             // label1
@@ -48,7 +49,7 @@
             // 
             label2.AutoSize = true;
             label2.Font = new Font("Segoe UI", 15F, FontStyle.Regular, GraphicsUnit.Point);
-            label2.Location = new Point(42, 205);
+            label2.Location = new Point(42, 177);
             label2.Name = "label2";
             label2.Size = new Size(140, 28);
             label2.TabIndex = 7;
@@ -66,16 +67,31 @@
             // comboBox1
             // 
             comboBox1.FormattingEnabled = true;
-            comboBox1.Location = new Point(42, 255);
+            comboBox1.Location = new Point(42, 227);
             comboBox1.Name = "comboBox1";
             comboBox1.Size = new Size(254, 23);
             comboBox1.TabIndex = 20;
+            comboBox1.SelectedIndexChanged += comboBox1_SelectedIndexChanged;
+            // 
+            // button3
+            // 
+            button3.BackColor = SystemColors.ActiveCaptionText;
+            button3.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            button3.ForeColor = SystemColors.HighlightText;
+            button3.Location = new Point(100, 292);
+            button3.Name = "button3";
+            button3.Size = new Size(153, 46);
+            button3.TabIndex = 21;
+            button3.Text = "Assign User";
+            button3.UseVisualStyleBackColor = false;
+            button3.Click += button3_Click;
             // 
             // AssignUser
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(359, 367);
+            Controls.Add(button3);
             Controls.Add(comboBox1);
             Controls.Add(comboBox2);
             Controls.Add(label2);
@@ -92,5 +108,6 @@
         private Label label2;
         private ComboBox comboBox2;
         private ComboBox comboBox1;
+        private Button button3;
     }
 }

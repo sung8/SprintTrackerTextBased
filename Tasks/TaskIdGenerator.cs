@@ -14,23 +14,35 @@ namespace SprintTrackerBasic.Tasks
         public static int GenerateRootId()
         {
             return ++rootTaskCounter;
+            //return rootTaskCounter++;
         }
 
-        public static int GenerateId(int parentId)
+        public static int GenerateId(TaskAbs task)
         {
-            if (parentId == 0)
+            if (task.GetParent() == null)
             {
+                // This is a root node
                 return GenerateRootId();
 
             }
             else
             {
-                if (!childTaskCounters.ContainsKey(parentId))
-                {
-                    childTaskCounters[parentId] = 1;
-                }
-                return parentId * 100 + childTaskCounters[parentId]++;
+                // This is a child node
+                return GenerateChildId(task.GetParent());
             }
+        }
+        public static int GenerateChildId(TaskAbs parent)
+        {
+
+            if (!childTaskCounters.ContainsKey(parent.GetId()))
+            {
+                childTaskCounters[parent.GetId()] = 1;
+            }
+
+            int childId = parent.GetId() * 100 + childTaskCounters[parent.GetId()]++;
+
+            return childId;
+
         }
     }
 }
