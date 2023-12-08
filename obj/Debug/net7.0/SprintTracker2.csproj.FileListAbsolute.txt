@@ -1,0 +1,4 @@
+C:\SWENG-421-LABS\Final-Project-Sprint-Tracker\SprintTrackerTextBased\obj\Debug\net7.0\SprintTracker2.GeneratedMSBuildEditorConfig.editorconfig
+C:\SWENG-421-LABS\Final-Project-Sprint-Tracker\SprintTrackerTextBased\obj\Debug\net7.0\SprintTracker2.AssemblyInfoInputs.cache
+C:\SWENG-421-LABS\Final-Project-Sprint-Tracker\SprintTrackerTextBased\obj\Debug\net7.0\SprintTracker2.AssemblyInfo.cs
+C:\SWENG-421-LABS\Final-Project-Sprint-Tracker\SprintTrackerTextBased\obj\Debug\net7.0\SprintTracker2.csproj.CoreCompileInputs.cache
