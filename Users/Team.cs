@@ -12,12 +12,12 @@ namespace SprintTrackerBasic.Users
         public string name { get; set; }
 
         public List<TeamMember> members { get; set; }
-
+        //private HashSet<TeamMember> members = new HashSet<TeamMember>();
         public Team(int id, string name)
         {
             this.id = id;
             this.name = name;
-            this.members = new List<TeamMember>();
+            members = new List<TeamMember>();
         }
 
         public Team(int id, string name, List<TeamMember> members)
@@ -27,7 +27,7 @@ namespace SprintTrackerBasic.Users
             this.members = members;
         }
 
-        public void Add(TeamMember member)
+        public void AddTeamMember(TeamMember member)
         {
             members.Add(member);
             member.assignedTeam = this;
@@ -40,6 +40,10 @@ namespace SprintTrackerBasic.Users
             {
                 Console.WriteLine($"  Team Member: {teamMember.name}, MemberId: {teamMember.id}");
             }
+        }
+        public bool IsTeamMember(TeamMember member)
+        {
+            return members.Contains(member);
         }
     }
 }
