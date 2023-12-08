@@ -1,27 +1,30 @@
 {
   "format": 1,
   "restore": {
-    "D:\\SWENG 421Projects\\SprintTrackerTextBased\\SprintTrackerBasic.csproj": {}
+    "C:\\SWENG-421-LABS\\Final-Project-Sprint-Tracker\\SprintTrackerTextBased\\SprintTrackerBasic.csproj": {}
   },
   "projects": {
-    "D:\\SWENG 421Projects\\SprintTrackerTextBased\\SprintTrackerBasic.csproj": {
+    "C:\\SWENG-421-LABS\\Final-Project-Sprint-Tracker\\SprintTrackerTextBased\\SprintTrackerBasic.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\SWENG 421Projects\\SprintTrackerTextBased\\SprintTrackerBasic.csproj",
+        "projectUniqueName": "C:\\SWENG-421-LABS\\Final-Project-Sprint-Tracker\\SprintTrackerTextBased\\SprintTrackerBasic.csproj",
         "projectName": "SprintTrackerBasic",
-        "projectPath": "D:\\SWENG 421Projects\\SprintTrackerTextBased\\SprintTrackerBasic.csproj",
-        "packagesPath": "C:\\Users\\fyrel\\.nuget\\packages\\",
-        "outputPath": "D:\\SWENG 421Projects\\SprintTrackerTextBased\\obj\\",
+        "projectPath": "C:\\SWENG-421-LABS\\Final-Project-Sprint-Tracker\\SprintTrackerTextBased\\SprintTrackerBasic.csproj",
+        "packagesPath": "C:\\Users\\Lena\\.nuget\\packages\\",
+        "outputPath": "C:\\SWENG-421-LABS\\Final-Project-Sprint-Tracker\\SprintTrackerTextBased\\obj\\",
         "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        ],
         "configFilePaths": [
-          "C:\\Users\\fyrel\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\Lena\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
           "net7.0-windows"
         ],
         "sources": {
-          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
@@ -39,6 +42,20 @@
       "frameworks": {
         "net7.0-windows7.0": {
           "targetAlias": "net7.0-windows",
+          "dependencies": {
+            "AutomaticGraphLayout": {
+              "target": "Package",
+              "version": "[1.1.12, )"
+            },
+            "AutomaticGraphLayout.Drawing": {
+              "target": "Package",
+              "version": "[1.1.12, )"
+            },
+            "AutomaticGraphLayout.GraphViewerGDI": {
+              "target": "Package",
+              "version": "[1.1.12, )"
+            }
+          },
           "imports": [
             "net461",
             "net462",
@@ -58,7 +75,7 @@
               "privateAssets": "none"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.400\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.401\\RuntimeIdentifierGraph.json"
         }
       }
     }
