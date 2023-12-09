@@ -11,6 +11,9 @@
     <Compile Update="CalendarView.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Update="IssueNotificationLog.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Update="TaskCreator.cs">
       <SubType>Form</SubType>
     </Compile>
