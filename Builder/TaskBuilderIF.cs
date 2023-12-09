@@ -1,4 +1,5 @@
-﻿using System;
+﻿using SprintTrackerBasic.Tasks;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -8,7 +9,13 @@ namespace SprintTrackerBasic.Builder
 {
     public interface TaskBuilderIF
     {
-        public TaskBuilderIF GetTaskBuilder(string info);
+        public static abstract TaskBuilderIF GetTaskBuilder(string info);
+        public TaskAbs Build();
+        public TaskBuilderIF SetTaskName(string taskName);
+        public TaskBuilderIF SetDueDate(DateTime dueDate);
+        public TaskBuilderIF SetDescription(string description);
+        public TaskBuilderIF AddAssignedTeamMember(List<Users.TeamMember> assign);
+
 
     }
 }

@@ -1,4 +1,5 @@
-﻿using SprintTrackerBasic.Users;
+﻿using SprintTrackerBasic.Tasks;
+using SprintTrackerBasic.Users;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -17,11 +18,15 @@ namespace SprintTrackerBasic
         private DateTime dueDate;
         private string desc ="";
         private List<Users.TeamMember> assigned = new List<Users.TeamMember>();
+        private List<TaskAbs> subTask = new List<TaskAbs>();
         ViewOrganizer vo = ViewOrganizer.GetInstance();
-        public TaskCreator()
+        private ToDoView todoview;
+
+        public TaskCreator(ToDoView tdv)
         {
             InitializeComponent();
             InitializeDateDropdown();
+            todoview = tdv;
         }
 
         private void InitializeDateDropdown()
@@ -73,9 +78,13 @@ namespace SprintTrackerBasic
             }
         }
 
+
+        //create task button
         private void button3_Click(object sender, EventArgs e)
         {
-           
+            TaskAbs task = vo.ParseData(taskName, dueDate, desc, assigned, subTask);
+            todoview.AddingTask(task);
+            this.Close();
         }
     }
 }

@@ -7,7 +7,7 @@ namespace SprintTrackerBasic
         static void Main(string[] args)
         {
             //transform console app to forms app
-            Application.Run(new CalendarView());
+            Application.Run(new ToDoView());
             //////// EXAMPLE 1
             // Create root
             var root1 = new TaskComposite("Root");

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using SprintTrackerBasic.Tasks;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -8,6 +9,13 @@ namespace SprintTrackerBasic.Builder
 {
     public class CompositeTaskBuilder: AbsTaskBuilder
     {
+
         public CompositeTaskBuilder() { }
+        public override TaskAbs Build()
+        {
+            return new Tasks.TaskComposite(name);
+        }
+
+
     }
 }

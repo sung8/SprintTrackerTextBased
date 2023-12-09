@@ -1,4 +1,5 @@
-﻿using SprintTrackerBasic.Users;
+﻿using SprintTrackerBasic.Tasks;
+using SprintTrackerBasic.Users;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -22,7 +23,7 @@ namespace SprintTrackerBasic
         // "New Task" button
         private void button1_Click(object sender, EventArgs e)
         {
-            TaskCreator tc = new TaskCreator();
+            TaskCreator tc = new TaskCreator(this);
             this.Enabled = false;
             tc.ShowDialog();
             this.Enabled = true;
@@ -48,6 +49,11 @@ namespace SprintTrackerBasic
                 listBox3.Items.Add(tm.name);
             }
             listBox3.Items.Add(team1.members[0].id + " " + team1.members[0].name);
+        }
+
+        public void AddingTask(TaskAbs ta)
+        {
+            listBox1.Items.Add(ta.name);
         }
 
 
