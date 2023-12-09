@@ -1,4 +1,6 @@
-﻿using System;
+﻿using SprintTrackerBasic.Observer;
+using SprintTrackerBasic.Users;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -6,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace SprintTrackerBasic.Tasks
 {
-    public class Issue: TaskComponentAbs
+    public class Issue: TaskComponentAbs, IssueObservableIF
     {
         public enum Status
         {
@@ -21,12 +23,15 @@ namespace SprintTrackerBasic.Tasks
         //private DateOnly dateRaised;
         private Status currStatus;
         private TaskAbs parentTask;
+        private List<IssueObserverIF> subscribers = new List<IssueObserverIF>();
 
-        public Issue(string title, string desc, Status status)
+
+        public Issue(string title, string desc, Status status, TaskAbs task)
         {
             this.name = title;
             this.desc = desc;
             this.currStatus = status;
+            this.parentTask = task;
         }
 
         public string GetName()
@@ -34,9 +39,20 @@ namespace SprintTrackerBasic.Tasks
             return this.name;
         }
 
-        public void SetName(string newName)
+        /*public void SetName(string newName)
         {
             this.name = newName;
+        }*/
+        public void SetName(string newName)
+        {
+            string oldName = this.name; // store the old value for comparison
+            this.name = newName;
+
+            // Notify observers about the name change
+            if (oldName != newName)
+            {
+                NotifyObservers("Name", newName);
+            }
         }
 
         public string GetDesc()
@@ -44,9 +60,20 @@ namespace SprintTrackerBasic.Tasks
             return this.desc;
         }
 
-        public void SetDesc(string newDesc)
+        /*public void SetDesc(string newDesc)
         {
             this.desc = newDesc;
+        }*/
+        public void SetDesc(string newDesc)
+        {
+            string oldDesc = this.desc; // store the old value for comparison
+            this.desc = newDesc;
+
+            // Notify observers about the description change
+            if (oldDesc != newDesc)
+            {
+                NotifyObservers("Description", newDesc);
+            }
         }
 
         public Status GetStatus()
@@ -54,7 +81,7 @@ namespace SprintTrackerBasic.Tasks
             return this.currStatus;
         }
 
-        public void SetStatus(Status newStatus)
+        /*public void SetStatus(Status newStatus)
         {
             if (newStatus is Status.Resolved)
             {
@@ -63,26 +90,108 @@ namespace SprintTrackerBasic.Tasks
             this.currStatus = newStatus;
             //ex:
             //myIssue.SetStatus(Issue.Status.New);
-        }
+        }*/
         public void SetParentTask(TaskAbs t)
         {
             this.parentTask = t;
         }
 
-        public void AssignToTask(TaskAbs task)
+        public void SetStatus(Status newStatus)
         {
-            /*this.parentTask = task;
-            task.Subscribe(new TeamMember("Issue Raiser")); */
-        }
-
-        protected void ResolveIssue()
-        {
-            if (parentTask != null)
+            if (newStatus == Status.Resolved)
             {
-                // Use a TeamMember object here if needed
-                //parentTask.Unsubscribe(subscriber);
+                // Create a copy of the subscribers list
+                var subscribersCopy = new List<IssueObserverIF>(subscribers);
+
+                // Notify observers
+                NotifyObservers("Status", newStatus.ToString());
+
+                // Unsubscribe the team members
+                foreach (var subscriber in subscribersCopy)
+                {
+                    if (subscriber is TeamMember teamMember)
+                    {
+                        teamMember.Unsubscribe(this);
+                    }
+                }
             }
 
+            this.currStatus = newStatus;
         }
+        public string Unsubscribe(IssueObserverIF observer)
+        {
+            if (subscribers.Contains(observer))
+            {
+
+                subscribers.Remove(observer);
+
+                TeamMember unsubscribedMember = observer as TeamMember;
+
+                if (unsubscribedMember != null)
+                {
+                    return $"{unsubscribedMember.name} was unsubscribed from {parentTask.GetAssignedMember().GetName()}'s issue report {GetName()}";
+                }
+            }
+
+            return "";
+        }
+
+        private void NotifyObservers(string attributeName, string updatedValue)
+        {
+            foreach (var observer in subscribers)
+            {
+                observer.UpdateIssue(this, attributeName, updatedValue);
+            }
+        }
+
+        /*public void SubscribeMultiple(List<IssueObserverIF> observers)
+        {
+            foreach (var observer in observers)
+            {
+                Subscribe(observer);
+            }
+        }*/
+        public string SubscribeMultiple(List<IssueObserverIF> observers)
+        {
+            var results = "";
+
+            foreach (var observer in observers)
+            {
+                results += Subscribe(observer);
+            }
+
+            return results;
+        }
+
+        public string Subscribe(IssueObserverIF observer)
+        {
+            subscribers.Add(observer);
+
+            if (observer is TeamMember teamMember)
+            {
+                return $"{teamMember.GetName()} subscribed to the issue: {GetName()}\n";
+            }
+
+            return "";
+        }
+
+
+        /*public void AlertAndUnsubscribeAll()
+        {
+            // Alert one last time that the issue is resolved
+            NotifyObservers("Status", Status.Resolved.ToString());
+
+            // Create a copy of the subscribers list
+            var subscribersCopy = new List<IssueObserverIF>(subscribers);
+
+            // Unsubscribe all observers
+            foreach (var subscriber in subscribersCopy)
+            {
+                if (subscriber is TeamMember teamMember)
+                {
+                    teamMember.Unsubscribe(this);
+                }
+            }
+        }*/
     }
 }

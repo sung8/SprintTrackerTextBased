@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace SprintTrackerBasic.Tasks
 {
-    public abstract class TaskComponentAbs: ITaskComponent
+    public abstract class TaskComponentAbs: TaskComponentIF
     {
     }
 }

@@ -7,16 +7,16 @@ using System.Threading.Tasks;
 
 namespace SprintTrackerBasic.Builder
 {
-    public class TaskBuilder: AbsTaskBuilder
+    public class TaskBuilder: TaskBuilderAbs
     {
 
         public TaskBuilder() { }
 
-    
+
 
         public override TaskAbs Build()
         {
-            return new Tasks.Task(name);
+            return new Tasks.Task();
         }
     }
 }

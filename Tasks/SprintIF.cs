@@ -4,10 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace SprintTrackerBasic.Users
+namespace SprintTrackerBasic.Tasks
 {
-    public interface IObserver<T>
+    public interface SprintIF
     {
-        void Update(T data);
+
     }
 }

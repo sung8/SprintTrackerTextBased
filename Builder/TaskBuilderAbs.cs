@@ -7,10 +7,10 @@ using System.Threading.Tasks;
 
 namespace SprintTrackerBasic.Builder
 {
-    public abstract class AbsTaskBuilder: TaskBuilderIF
+    public abstract class TaskBuilderAbs: TaskBuilderIF
     {
-        private static AbsTaskBuilder taskBuilder = new TaskBuilder();
-        private static AbsTaskBuilder compositeBuilder = new CompositeTaskBuilder();
+        private static TaskBuilderAbs taskBuilder = new TaskBuilder();
+        private static TaskBuilderAbs compositeBuilder = new CompositeTaskBuilder();
         public string name { get; set; }
         public DateTime date { get; set; }
         public string desc { get; set; }

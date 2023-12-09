@@ -32,7 +32,7 @@ namespace SprintTrackerBasic
 
             foreach (Team t in vo.GetTeams())
             {
-                comboBox2.Items.Add(t.name);
+                comboBox2.Items.Add(t.GetName());
             }
         }
 
@@ -41,9 +41,9 @@ namespace SprintTrackerBasic
             comboBox1.SelectedItem = null;
             comboBox1.Items.Clear();
             tindex = comboBox2.SelectedIndex;
-            for (int i = 0; i < vo.GetTeams()[tindex].members.Count; i++)
+            for (int i = 0; i < vo.GetTeams()[tindex].GetTeamMembers().Count; i++)
             {
-                comboBox1.Items.Add(vo.GetTeams()[tindex].members[i].name);
+                comboBox1.Items.Add(vo.GetTeams()[tindex].GetTeamMembers()[i].name);
             }
             s1 = true;
         }
@@ -58,7 +58,7 @@ namespace SprintTrackerBasic
         {
             if (s1 && s2)
             {
-                creator.AddingUser(vo.GetTeams()[tindex].members[mindex]);
+                creator.AddingUser(vo.GetTeams()[tindex].GetTeamMembers()[mindex]);
                 this.Close();
             }
         }

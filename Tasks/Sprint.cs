@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace SprintTrackerBasic.Tasks
 {
-    public class Sprint: ISprint
+    public class Sprint: SprintIF
     {
         private DateOnly startDate;
         public Dictionary<int, Day> Days { get; } = new Dictionary<int, Day>();
@@ -28,7 +28,7 @@ namespace SprintTrackerBasic.Tasks
             }
         }
 
-        public void PrintDayIdsAndDates()
+        /*public void PrintDayIdsAndDates()
         {
             foreach (var dayEntry in Days)
             {
@@ -39,6 +39,41 @@ namespace SprintTrackerBasic.Tasks
 
                 Console.WriteLine($"Day ID: {dayId}, Due Date: {dueDateString}");
             }
+        }*/
+
+        public string GetStringDayIdsAndDates()
+        {
+            var results = "";
+            foreach (var dayEntry in Days)
+            {
+                int dayId = dayEntry.Key;
+                Day day = dayEntry.Value;
+
+                string dayIdString = day.GetId();
+                string dueDateString = day.GetDate().ToString("yyyyMMdd");
+
+                results += $"Day ID: {dayId}, Due Date: {dueDateString} \n";
+            }
+
+            return results;
+        }
+
+        public List<string> GetStringListDayIdsAndDates()
+        {
+            var results = new List<string>();
+
+            foreach (var dayEntry in Days)
+            {
+                int dayId = dayEntry.Key;
+                Day day = dayEntry.Value;
+
+                string dayIdString = day.GetId();
+                string dueDateString = day.GetDate().ToString("yyyyMMdd");
+
+                results.Add($"Day ID: {dayId}, Due Date: {dueDateString}");
+            }
+
+            return results;
         }
     }
 }

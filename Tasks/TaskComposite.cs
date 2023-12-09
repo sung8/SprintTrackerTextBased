@@ -1,4 +1,5 @@
-﻿using System;
+﻿using SprintTrackerBasic.Users;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -8,27 +9,28 @@ namespace SprintTrackerBasic.Tasks
 {
     public class TaskComposite : TaskAbs
     {
-        public TaskComposite(string name) : base(name) {
-            this.SetId();
-        }
-
-        public override void Display()
-        {
-            Console.WriteLine($"ID: {this.GetId()}");
-            Console.WriteLine($"Name: {this.name}");
-
-            foreach (var child in this.children)
-                child.Display();
-        }
-
-        public void AddSubTask(TaskAbs subTask)
-        {
-            this.AddChild(subTask);
-        }
-
         protected List<TaskAbs> subtasks = new List<TaskAbs>();
 
+        public TaskComposite()
+        {
 
+        }
+        public TaskComposite(TeamMember assignedPerson, string taskName, DateOnly dueDate)
+        {
+            this.SetId();
+            this.SetName(taskName);
+            this.SetAssignedMember(assignedPerson);
+            this.SetDueDate(dueDate);
+            this.subtasks = new List<TaskAbs>();
+        }
+        public TaskComposite(TeamMember assignedPerson, string taskName, DateOnly dueDate, List<TaskAbs> children)
+        {
+            this.SetId();
+            this.SetName(taskName);
+            this.SetAssignedMember(assignedPerson);
+            this.SetDueDate(dueDate);
+            this.subtasks = children;
+        }
 
         public void AddChild(TaskAbs task)
         {
@@ -45,28 +47,16 @@ namespace SprintTrackerBasic.Tasks
         {
             subtasks.Remove(task);
         }
-
-        public List<TaskAbs> GetSubtasks()
+        public override string Iterate()
         {
-            return subtasks;
-        }
-
-        /*public override void Execute()
-        {
-            Console.WriteLine("Executing task " + this.GetId() + ": " + this.GetName());
-            foreach (var task in subtasks)
-            {
-                task.Execute();
-            }
-        }*/
-        public override void Iterate()
-        {
-            Console.WriteLine(GetId() + ": " + GetName());
+            var result = $"{GetId()} {GetName()} \n";
 
             foreach (var child in subtasks)
             {
-                child.Iterate();
+                result += $"- {child.Iterate()} \n";
             }
+
+            return result;
         }
     }
 }

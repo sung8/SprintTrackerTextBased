@@ -6,8 +6,8 @@ using System.Threading.Tasks;
 
 namespace SprintTrackerBasic.Tasks
 {
-    public interface ISprint
+    public interface TaskComponentIF
     {
-
+        //public void Display();
     }
 }

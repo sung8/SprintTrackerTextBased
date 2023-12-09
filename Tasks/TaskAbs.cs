@@ -1,4 +1,5 @@
-﻿using SprintTrackerBasic.Users;
+﻿using SprintTrackerBasic.Observer;
+using SprintTrackerBasic.Users;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,48 +8,39 @@ using System.Threading.Tasks;
 
 namespace SprintTrackerBasic.Tasks
 {
-    public abstract class TaskAbs: IDayComponent
+    public abstract class TaskAbs: DayComponentIF
     {
         private int id;
-
-        public string name { get; set; }
-
-        public TaskAbs parent { get; set; }
-        public List<TaskAbs> children { get; } = new List<TaskAbs>();
-
+        private string name;
+        private DateOnly dueDate;
+        private TaskAbs? parent;
         private TeamMember assignedMember;
         public List<Issue> issues { get; set; } = new List<Issue>();
-        private List<Users.IObserver<string>> observers = new List<Users.IObserver<string>>();
+        private List<IssueObserverIF> observers = new List<IssueObserverIF>();
 
-        public TaskAbs(string name)
+        public TaskAbs()
         {
-            this.name = name;
         }
 
-        public string GetName()
+        public TaskAbs(TeamMember assignedPerson, string taskName, DateOnly dueDate)
         {
-            return name;
+            this.assignedMember = assignedPerson;
+            this.name = taskName;
+            this.dueDate = dueDate;
         }
 
         public int GetId()
         {
             return this.id;
         }
-
-        public void AddChild(TaskAbs child)
-        {
-            child.parent = this;
-            this.children.Add(child);
-        }
-
-        public abstract void Display();
-
-
         public void SetId()
         {
             this.id = TaskIdGenerator.GenerateId(this);
         }
-
+        public string GetName()
+        {
+            return this.name;
+        }
         public void SetName(string newName)
         {
             this.name = newName;
@@ -61,11 +53,40 @@ namespace SprintTrackerBasic.Tasks
         {
             this.parent = parent;
         }
+
+        public void SetDueDate(DateOnly date)
+        {
+            this.dueDate = date;
+        }
+        public DateOnly GetDueDate()
+        {
+            return this.dueDate;
+        }
+        public void SetAssignedMember(TeamMember assignedPerson)
+        {
+            this.assignedMember = assignedPerson;
+        }
+        public TeamMember GetAssignedMember()
+        {
+            return this.assignedMember;
+        }
+
         public void AddIssue(Issue newIssueReport)
         {
             this.issues.Add(newIssueReport);
             newIssueReport.SetParentTask(this);
         }
+        public void AddIssue(Issue newIssueReport, List<IssueObserverIF> members)
+        {
+            this.issues.Add(newIssueReport);
+            newIssueReport.SetParentTask(this);
+
+            foreach (var member in members)
+            {
+                observers.Add(member);
+            }
+        }
+
         public List<Issue> GetAllIssues()
         {
             // Check if the task has issues
@@ -78,26 +99,27 @@ namespace SprintTrackerBasic.Tasks
             // Return the list of issues
             return this.issues;
         }
-
-        public void Subscribe(Users.IObserver<string> observer)
+        public void Subscribe(IssueObserverIF observer)
         {
             observers.Add(observer);
         }
 
-        public void Unsubscribe(Users.IObserver<string> observer)
+        public void Unsubscribe(IssueObserverIF observer)
         {
             observers.Remove(observer);
         }
-        private void NotifyObservers(string data)
+
+        private void NotifyObservers(string attributeName, string updatedValue)
         {
             foreach (var observer in observers)
             {
-                observer.Update(data);
+                observer.UpdateIssue(GetAllIssues().Last(), attributeName, updatedValue);
             }
         }
 
         //public abstract void Execute();
-        public abstract void Iterate();
+        //public abstract void Iterate();
+        public abstract string Iterate();
     }
 
 }

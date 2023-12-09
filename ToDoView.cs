@@ -23,13 +23,13 @@ namespace SprintTrackerBasic
         // "New Task" button
         private void button1_Click(object sender, EventArgs e)
         {
-            TaskCreator tc = new TaskCreator(this);
+            /*TaskCreator tc = new TaskCreator(this);
             this.Enabled = false;
             tc.ShowDialog();
             this.Enabled = true;
 
             Tasks.Task t1 = new Tasks.Task("hello");
-            listBox1.Items.Add(t1.GetId() + " " + t1.GetName());
+            listBox1.Items.Add(t1.GetId() + " " + t1.GetName());*/
         }
 
         // "Add User" button
@@ -44,16 +44,16 @@ namespace SprintTrackerBasic
             team1.AddTeamMember(new TeamMember(1, "joe", team1));
             team1.AddTeamMember(new TeamMember(2, "sam", team1));
             team1.AddTeamMember(new TeamMember(3, "kim", team1));
-            foreach (TeamMember tm in team1.members)
+            foreach (TeamMember tm in team1.GetTeamMembers())
             {
                 listBox3.Items.Add(tm.name);
             }
-            listBox3.Items.Add(team1.members[0].id + " " + team1.members[0].name);
+            listBox3.Items.Add(team1.GetTeamMembers()[0].id + " " + team1.GetTeamMembers()[0].name);
         }
 
         public void AddingTask(TaskAbs ta)
         {
-            listBox1.Items.Add(ta.name);
+            listBox1.Items.Add(ta.GetName());
         }
 
 

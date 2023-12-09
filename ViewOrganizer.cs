@@ -40,7 +40,7 @@ namespace SprintTrackerBasic
 
             if(ta.Count == 0)
             {
-                TaskBuilderIF tb = AbsTaskBuilder.GetTaskBuilder("task");
+                TaskBuilderIF tb = TaskBuilderAbs.GetTaskBuilder("task");
                 var task = tb
                  .SetTaskName(tn)
                  .SetDueDate(dd)
@@ -50,7 +50,7 @@ namespace SprintTrackerBasic
             }
             else
             {
-                TaskBuilderIF tb = AbsTaskBuilder.GetTaskBuilder("composite");
+                TaskBuilderIF tb = TaskBuilderAbs.GetTaskBuilder("composite");
                 var task = tb
                  .SetTaskName(tn)
                  .SetDueDate(dd)

@@ -1,4 +1,6 @@
-﻿using System;
+﻿using SprintTrackerBasic.Observer;
+using SprintTrackerBasic.Tasks;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -6,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace SprintTrackerBasic.Users
 {
-    public class TeamMember : IObserver<string>
+    public class TeamMember : IssueObserverIF
     {
         public int id { get; set; }
         public string name { get; set; }
@@ -24,9 +26,26 @@ namespace SprintTrackerBasic.Users
             this.name = memberName;
             this.assignedTeam = team;
         }
-        public void Update(string data)
+        public string GetName()
         {
-            Console.WriteLine($"Team member '{name}' received update: {data}");
+            return this.name;
+        }
+        public Team GetAssignedTeam()
+        {
+            return this.assignedTeam;
+        }
+        /*public void UpdateIssue(Issue issue, string attributeName, string updatedValue)
+        {
+            Console.WriteLine($"{this.GetName()} received update: {issue.GetName()}'s {attributeName} is changed to {updatedValue}");
+        }*/
+        public string UpdateIssue(Issue issue, string attributeName, string updatedValue)
+        {
+            return $"{this.GetName()} received update: {issue.GetName()}'s {attributeName} is changed to {updatedValue}";
+        }
+        // Implement Unsubscribe method from IssueObserverIF
+        public void Unsubscribe(IssueObservableIF observable)
+        {
+            observable.Unsubscribe(this);
         }
     }
 }

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace SprintTrackerBasic.Tasks
 {
-    public interface IDayComponent: ISprintComponent
+    public interface SprintComponentIF: SprintIF
     {
     }
 }

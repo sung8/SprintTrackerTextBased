@@ -1,4 +1,5 @@
-﻿using System;
+﻿using SprintTrackerBasic.Users;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -8,20 +9,27 @@ namespace SprintTrackerBasic.Tasks
 {
     public class Task : TaskAbs
     {
-        public Task(string tname): base(tname)
+        public Task()
+        {
+
+        }
+        public Task(TeamMember assignedPerson, string taskName, DateOnly dueDate)
         {
             this.SetId();
+            this.SetName(taskName);
+            this.SetAssignedMember(assignedPerson);
+            this.SetDueDate(dueDate);
         }
 
-        public override void Iterate()
+        public override string Iterate()
         {
-            // Tasks have no children - do nothing
+            return $"{GetId()}: {GetName()} (Task)";
         }
 
-        public override void Display()
+        /*public override void Display()
         {
             Console.WriteLine($"ID: {this.GetId()}");
             Console.WriteLine($"Name: {this.name}");
-        }
+        }*/
     }
 }

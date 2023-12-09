@@ -73,7 +73,7 @@ namespace SprintTrackerBasic
         {
             if (!assigned.Contains(m))
             {
-                listBox1.Items.Add("Name: " + m.name + ", Team: " + m.assignedTeam.name);
+                listBox1.Items.Add("Name: " + m.name + ", Team: " + m.assignedTeam.GetName());
                 assigned.Add(m);
             }
         }

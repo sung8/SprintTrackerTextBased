@@ -45,7 +45,7 @@ namespace SprintTrackerBasic
                 Users.Team existingTeam = null;
                 for (int i = 0; i < vo.GetTeams().Count; i++)
                 {
-                    if (vo.GetTeams()[i].name == teamName)
+                    if (vo.GetTeams()[i].GetName() == teamName)
                     {
                         existingTeam = vo.GetTeams()[i];
                         break;
