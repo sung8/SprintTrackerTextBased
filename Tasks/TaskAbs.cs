@@ -10,6 +10,12 @@ namespace SprintTrackerBasic.Tasks
 {
     public abstract class TaskAbs: DayComponentIF
     {
+        public enum Category
+        {
+            Todo,
+            Doing,
+            Done
+        }
         private int id;
         private string name;
         private DateTime dueDate;
@@ -17,6 +23,8 @@ namespace SprintTrackerBasic.Tasks
         private TeamMember assignedMember;
         public List<Issue> issues { get; set; } = new List<Issue>();
         private List<IssueObserverIF> observers = new List<IssueObserverIF>();
+
+        private Category currState;
 
         public TaskAbs()
         {
@@ -27,6 +35,28 @@ namespace SprintTrackerBasic.Tasks
             this.assignedMember = assignedPerson;
             this.name = taskName;
             this.dueDate = dueDate;
+            if (this.GetParent() != null)
+            {
+                this.currState = parent.GetCategory();
+            }
+        }
+
+        public TaskAbs(TeamMember assignedPerson, string taskName, DateTime dueDate, Category progress)
+        {
+            this.assignedMember = assignedPerson;
+            this.name = taskName;
+            this.dueDate = dueDate;
+            this.currState = progress;
+        }
+
+        public void SetCategory(Category progress)
+        {
+            this.currState = progress;
+        }
+
+        public Category GetCategory()
+        {
+            return this.currState;
         }
 
         public int GetId()

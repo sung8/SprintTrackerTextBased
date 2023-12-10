@@ -19,21 +19,23 @@ namespace SprintTrackerBasic.Tasks
         {
 
         }
-        public TaskComposite(TeamMember assignedPerson, string taskName, DateTime dueDate)
+        public TaskComposite(TeamMember assignedPerson, string taskName, DateTime dueDate, Category progress)
         {
             this.SetId();
             this.SetName(taskName);
             this.SetAssignedMember(assignedPerson);
             this.SetDueDate(dueDate);
             this.subtasks = new List<TaskAbs>();
+            this.SetCategory(progress);
         }
-        public TaskComposite(TeamMember assignedPerson, string taskName, DateTime dueDate, List<TaskAbs> children)
+        public TaskComposite(TeamMember assignedPerson, string taskName, DateTime dueDate, List<TaskAbs> children, Category progress)
         {
             this.SetId();
             this.SetName(taskName);
             this.SetAssignedMember(assignedPerson);
             this.SetDueDate(dueDate);
             this.subtasks = children;
+            this.SetCategory(progress);
         }
 
         public void AddChild(TaskAbs task)

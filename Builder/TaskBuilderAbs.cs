@@ -1,6 +1,7 @@
 ﻿using SprintTrackerBasic.Tasks;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -16,6 +17,8 @@ namespace SprintTrackerBasic.Builder
         public string desc { get; set; }
         public List<TaskAbs> subTask { get; set; }
         public List<Users.TeamMember> assigned { get; set; }
+
+        public TaskAbs.Category currState { get; set; }
 
         public TaskBuilderIF SetTaskName(string taskName)
         {
@@ -54,10 +57,13 @@ namespace SprintTrackerBasic.Builder
             subTask = children;
             return this;
         }
+
+        public TaskBuilderIF SetCategory(TaskAbs.Category progress)
+        {
+            currState = progress;
+            return this;
+        }
         public abstract TaskAbs Build();
-
-
-
 
     }
 }

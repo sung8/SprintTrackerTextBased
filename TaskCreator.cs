@@ -1,4 +1,5 @@
-﻿using SprintTrackerBasic.Tasks;
+﻿using Microsoft.Msagl.Drawing;
+using SprintTrackerBasic.Tasks;
 using SprintTrackerBasic.Users;
 using System;
 using System.Collections.Generic;
@@ -24,11 +25,16 @@ namespace SprintTrackerBasic
         ViewOrganizer vo = ViewOrganizer.GetInstance();
         private ToDoView todoview;
 
+        private TaskAbs.Category currState;
+        private bool isUrgent = false;
+        private bool isMeeting = false;
+
         public TaskCreator(ToDoView tdv)
         {
             InitializeComponent();
             InitializeDateDropdown();
             todoview = tdv;
+            InitializeEventHandlers();
         }
 
         public TaskCreator(TaskCreator parent)
@@ -36,6 +42,89 @@ namespace SprintTrackerBasic
             InitializeComponent();
             InitializeDateDropdown();
             this.parent = parent;
+            InitializeEventHandlers();
+        }
+
+        private void InitializeEventHandlers()
+        {
+            radioButton1.CheckedChanged += ProgressRadioButton_CheckedChanged; // todo
+            radioButton2.CheckedChanged += ProgressRadioButton_CheckedChanged; // doing
+            radioButton3.CheckedChanged += ProgressRadioButton_CheckedChanged; // done
+
+            // urgent
+            radioButton4.CheckedChanged += IsUrgentRadioButton_CheckedChanged; // yes
+            radioButton5.CheckedChanged += IsUrgentRadioButton_CheckedChanged; // no
+
+            // meeting
+            radioButton6.CheckedChanged += IsMeetingRadioButton_CheckedChanged; // yes
+            radioButton7.CheckedChanged += IsMeetingRadioButton_CheckedChanged; // no
+
+        }
+
+        private void ProgressRadioButton_CheckedChanged(object sender, EventArgs e)
+        {
+            RadioButton selectedRadioButton = (RadioButton)sender;
+
+            // Ensure only the selected radio button is checked
+            if (selectedRadioButton.Checked)
+            {
+                if (selectedRadioButton == radioButton1)
+                {
+                    radioButton2.Checked = false;
+                    radioButton3.Checked = false;
+                    currState = TaskAbs.Category.Todo;
+                }
+                else if (selectedRadioButton == radioButton2)
+                {
+                    radioButton1.Checked = false;
+                    radioButton3.Checked = false;
+                    currState = TaskAbs.Category.Doing;
+                }
+                else if (selectedRadioButton == radioButton3)
+                {
+                    radioButton1.Checked = false;
+                    radioButton2.Checked = false;
+                    currState = TaskAbs.Category.Done;
+                }
+            }
+        }
+
+        private void IsUrgentRadioButton_CheckedChanged(object sender, EventArgs e)
+        {
+            RadioButton selectedRadioButton = (RadioButton)sender;
+
+            // Ensure only the selected radio button is checked
+            if (selectedRadioButton.Checked)
+            {
+                if (selectedRadioButton == radioButton4)
+                {
+                    radioButton5.Checked = false;
+                    isUrgent = true;
+                }
+                else if (selectedRadioButton == radioButton5)
+                {
+                    radioButton4.Checked = false;
+                }
+            }
+        }
+
+        private void IsMeetingRadioButton_CheckedChanged(object sender, EventArgs e)
+        {
+            RadioButton selectedRadioButton = (RadioButton)sender;
+
+            // Ensure only the selected radio button is checked
+            if (selectedRadioButton.Checked)
+            {
+                if (selectedRadioButton == radioButton6)
+                {
+                    radioButton7.Checked = false;
+                    isMeeting = true;
+                }
+                else if (selectedRadioButton == radioButton7)
+                {
+                    radioButton6.Checked = false;
+                }
+            }
         }
 
         private void InitializeDateDropdown()
@@ -95,7 +184,7 @@ namespace SprintTrackerBasic
         //create task button
         private void button3_Click(object sender, EventArgs e)
         {
-            TaskAbs task = vo.ParseData(taskName, dueDate, desc, assigned, subTask);
+            TaskAbs task = vo.ParseData(taskName, dueDate, desc, assigned, subTask, currState);
             if (parent == null)
             {
                 vo.AddTasks(task);
@@ -109,6 +198,7 @@ namespace SprintTrackerBasic
             }
             this.Close();
         }
+
 
         private void button1_Click(object sender, EventArgs e)
         {

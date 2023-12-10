@@ -17,6 +17,8 @@ namespace SprintTrackerBasic.Builder
         public TaskBuilderIF AddAssignedTeamMember(List<Users.TeamMember> assign);
         public TaskBuilderIF AddChildren(List<TaskAbs> children);
 
+        public TaskBuilderIF SetCategory(TaskAbs.Category progress);
+
 
     }
 }
