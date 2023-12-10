@@ -37,6 +37,8 @@
             treeView1 = new System.Windows.Forms.TreeView();
             treeView2 = new System.Windows.Forms.TreeView();
             treeView3 = new System.Windows.Forms.TreeView();
+            button4 = new Button();
+            label4 = new Label();
             SuspendLayout();
             // 
             // button1
@@ -100,7 +102,7 @@
             button3.BackColor = SystemColors.ActiveCaptionText;
             button3.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
             button3.ForeColor = SystemColors.HighlightText;
-            button3.Location = new Point(176, 21);
+            button3.Location = new Point(177, 21);
             button3.Name = "button3";
             button3.Size = new Size(113, 46);
             button3.TabIndex = 9;
@@ -114,6 +116,7 @@
             treeView1.Name = "treeView1";
             treeView1.Size = new Size(208, 259);
             treeView1.TabIndex = 10;
+            treeView1.NodeMouseDoubleClick += treeView1_NodeMouseDoubleClick;
             // 
             // treeView2
             // 
@@ -121,6 +124,7 @@
             treeView2.Name = "treeView2";
             treeView2.Size = new Size(208, 259);
             treeView2.TabIndex = 11;
+            treeView2.NodeMouseDoubleClick += treeView2_NodeMouseDoubleClick;
             // 
             // treeView3
             // 
@@ -128,12 +132,36 @@
             treeView3.Name = "treeView3";
             treeView3.Size = new Size(208, 259);
             treeView3.TabIndex = 12;
+            treeView3.NodeMouseDoubleClick += treeView3_NodeMouseDoubleClick;
+            // 
+            // button4
+            // 
+            button4.BackColor = SystemColors.WindowFrame;
+            button4.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            button4.ForeColor = SystemColors.HighlightText;
+            button4.Location = new Point(369, 21);
+            button4.Name = "button4";
+            button4.Size = new Size(136, 46);
+            button4.TabIndex = 13;
+            button4.Text = "Notification Log";
+            button4.UseVisualStyleBackColor = false;
+            button4.Click += button4_Click;
+            // 
+            // label4
+            // 
+            label4.AutoSize = true;
+            label4.Location = new Point(301, 83);
+            label4.Name = "label4";
+            label4.Size = new Size(0, 15);
+            label4.TabIndex = 14;
             // 
             // ToDoView
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 450);
+            Controls.Add(label4);
+            Controls.Add(button4);
             Controls.Add(treeView3);
             Controls.Add(treeView2);
             Controls.Add(treeView1);
@@ -160,5 +188,7 @@
         private System.Windows.Forms.TreeView treeView1;
         private System.Windows.Forms.TreeView treeView2;
         private System.Windows.Forms.TreeView treeView3;
+        private Button button4;
+        private Label label4;
     }
 }

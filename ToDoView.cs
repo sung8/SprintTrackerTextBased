@@ -72,7 +72,7 @@ namespace SprintTrackerBasic
 
         public void AddTaskToTreeView(TaskAbs task, TreeNode parentNode = null)
         {
-            TreeNode currentNode = new TreeNode(task.GetName());
+            TreeNode currentNode = new TreeNode(task.GetId() + ":" + task.GetName());
 
             if (parentNode != null)
             {
@@ -104,7 +104,7 @@ namespace SprintTrackerBasic
             }
         }
 
-
+        // calendar view
         private void button3_Click(object sender, EventArgs e)
         {
             CalendarView cv = new CalendarView();
@@ -112,6 +112,68 @@ namespace SprintTrackerBasic
             this.Hide();
             cv.Show();
 
+        }
+
+        // notification log
+        private void button4_Click(object sender, EventArgs e)
+        {
+            IssueNotificationLog logView = new IssueNotificationLog();
+            logView.FormClosed += (s, args) => this.Show();
+            this.Hide();
+            logView.Show();
+        }
+
+        private void processTreeView_NodeDoubleClick(string nodeText)
+        {
+            // Find the index of the ':' character
+            int colonIndex = nodeText.IndexOf(':');
+
+            string result = "";
+
+            // Check if the colon exists in the string
+            if (colonIndex != -1)
+            {
+                // Extract the substring before the colon
+                result = nodeText.Substring(0, colonIndex);
+            }
+
+            int id = int.Parse(result);
+
+            ViewOrganizer vo = ViewOrganizer.GetInstance();
+
+            TaskAbs currtask = vo.FindTaskById(id);
+
+            TaskInfo infoView = new TaskInfo(currtask);
+            infoView.FormClosed += (s, args) => this.Show();
+            this.Hide();
+            infoView.Show();
+        }
+        private void treeView1_NodeMouseDoubleClick(object sender, TreeNodeMouseClickEventArgs e)
+        {
+            // Check if a valid node is selected
+            if (e.Node != null)
+            {
+                processTreeView_NodeDoubleClick(e.Node.Text);
+            }
+        }
+
+        private void treeView2_NodeMouseDoubleClick(object sender, TreeNodeMouseClickEventArgs e)
+        {
+            // Check if a valid node is selected
+            if (e.Node != null)
+            {
+                processTreeView_NodeDoubleClick(e.Node.Text);
+            }
+        }
+
+
+        private void treeView3_NodeMouseDoubleClick(object sender, TreeNodeMouseClickEventArgs e)
+        {
+            // Check if a valid node is selected
+            if (e.Node != null)
+            {
+                processTreeView_NodeDoubleClick(e.Node.Text);
+            }
         }
     }
 }

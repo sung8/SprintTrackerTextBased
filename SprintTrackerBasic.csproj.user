@@ -20,6 +20,9 @@
     <Compile Update="TaskCreator.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Update="TaskInfo.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Update="ToDoView.cs">
       <SubType>Form</SubType>
     </Compile>

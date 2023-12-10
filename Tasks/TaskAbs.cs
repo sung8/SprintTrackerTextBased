@@ -23,6 +23,7 @@ namespace SprintTrackerBasic.Tasks
         private TeamMember assignedMember;
         public List<Issue> issues { get; set; } = new List<Issue>();
         private List<IssueObserverIF> observers = new List<IssueObserverIF>();
+        NotificationLog notifLog = NotificationLog.GetInstance();
 
         private Category currState;
 
@@ -105,6 +106,7 @@ namespace SprintTrackerBasic.Tasks
         {
             this.issues.Add(newIssueReport);
             newIssueReport.SetParentTask(this);
+            notifLog.AddLog("Issue raised by " + this.GetAssignedMember().GetName() + ": " + newIssueReport.GetName() + " " + newIssueReport.GetStatus().ToString() + " | Task: " + this.GetId() + " " + this.GetName());
         }
         public void AddIssue(Issue newIssueReport, List<IssueObserverIF> members)
         {

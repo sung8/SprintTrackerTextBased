@@ -38,6 +38,10 @@ namespace SprintTrackerBasic
             allTasks.Add(t);
         }
 
+        public TaskAbs FindTaskById(int id)
+        {
+            return allTasks.FirstOrDefault(task => task.GetId() == id);
+        }
         /*public void SortTodoViewTasks()
         {
             // Categorize tasks using LINQ

@@ -54,3 +54,4 @@ D:\SWENG 421Projects\SprintTrackerTextBased\obj\Debug\net7.0-windows\SprintTrack
 D:\SWENG 421Projects\SprintTrackerTextBased\obj\Debug\net7.0-windows\SprintTrackerBasic.Issues.resources
 C:\SWENG-421-LABS\Final-Project-Sprint-Tracker\SprintTrackerTextBased\obj\Debug\net7.0-windows\SprintTrackerBasic.IssueNotificationLog.resources
 C:\SWENG-421-LABS\Final-Project-Sprint-Tracker\SprintTrackerTextBased\obj\Debug\net7.0-windows\SprintTrackerBasic.Issues.resources
+C:\SWENG-421-LABS\Final-Project-Sprint-Tracker\SprintTrackerTextBased\obj\Debug\net7.0-windows\SprintTrackerBasic.TaskInfo.resources

@@ -28,17 +28,9 @@
         /// </summary>
         private void InitializeComponent()
         {
-            textBox1 = new TextBox();
             label1 = new Label();
+            label2 = new Label();
             SuspendLayout();
-            // 
-            // textBox1
-            // 
-            textBox1.Location = new Point(12, 89);
-            textBox1.Multiline = true;
-            textBox1.Name = "textBox1";
-            textBox1.Size = new Size(560, 360);
-            textBox1.TabIndex = 0;
             // 
             // label1
             // 
@@ -50,13 +42,22 @@
             label1.TabIndex = 1;
             label1.Text = "Issue Notification History";
             // 
+            // label2
+            // 
+            label2.AutoSize = true;
+            label2.Location = new Point(23, 81);
+            label2.Name = "label2";
+            label2.Size = new Size(38, 15);
+            label2.TabIndex = 2;
+            label2.Text = "label2";
+            // 
             // IssueNotificationLog
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(584, 461);
+            Controls.Add(label2);
             Controls.Add(label1);
-            Controls.Add(textBox1);
             Name = "IssueNotificationLog";
             Text = "IssueNotificationLog";
             ResumeLayout(false);
@@ -64,8 +65,7 @@
         }
 
         #endregion
-
-        private TextBox textBox1;
         private Label label1;
+        private Label label2;
     }
 }

@@ -57,7 +57,7 @@ namespace SprintTrackerBasic.Builder
             subTask = children;
             return this;
         }
-
+        
         public TaskBuilderIF SetCategory(TaskAbs.Category progress)
         {
             currState = progress;

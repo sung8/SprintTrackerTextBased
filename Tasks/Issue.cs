@@ -10,6 +10,7 @@ namespace SprintTrackerBasic.Tasks
 {
     public class Issue: TaskComponentAbs, IssueObservableIF
     {
+        NotificationLog notifLog = NotificationLog.GetInstance();
         public enum Status
         {
             New,
@@ -32,6 +33,7 @@ namespace SprintTrackerBasic.Tasks
             this.desc = desc;
             this.currStatus = status;
             this.parentTask = task;
+            /*notifLog.AddLog("Issue raised by " + parentTask.GetAssignedMember().GetName() + ": " + title + " " + status.ToString() + " | Task: " + task.GetId() + " " + task.GetName());*/
         }
 
         public Issue(string title, string desc, Status status)
@@ -136,6 +138,7 @@ namespace SprintTrackerBasic.Tasks
 
                 if (unsubscribedMember != null)
                 {
+                    notifLog.AddLog($"{unsubscribedMember.name} was unsubscribed from {parentTask.GetAssignedMember().GetName()}'s issue report {GetName()}");
                     return $"{unsubscribedMember.name} was unsubscribed from {parentTask.GetAssignedMember().GetName()}'s issue report {GetName()}";
                 }
             }
@@ -147,7 +150,9 @@ namespace SprintTrackerBasic.Tasks
         {
             foreach (var observer in subscribers)
             {
-                observer.UpdateIssue(this, attributeName, updatedValue);
+                //observer.UpdateIssue(this, attributeName, updatedValue);
+
+                notifLog.AddLog(observer.UpdateIssue(this, attributeName, updatedValue));
             }
         }
 
@@ -167,6 +172,7 @@ namespace SprintTrackerBasic.Tasks
                 results += Subscribe(observer);
             }
 
+            notifLog.AddLog(results);
             return results;
         }
 
@@ -176,6 +182,7 @@ namespace SprintTrackerBasic.Tasks
 
             if (observer is TeamMember teamMember)
             {
+                notifLog.AddLog($"{teamMember.GetName()} subscribed to the issue: {GetName()}\n");
                 return $"{teamMember.GetName()} subscribed to the issue: {GetName()}\n";
             }
 
