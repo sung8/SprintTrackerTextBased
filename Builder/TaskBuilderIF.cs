@@ -15,6 +15,7 @@ namespace SprintTrackerBasic.Builder
         public TaskBuilderIF SetDueDate(DateTime dueDate);
         public TaskBuilderIF SetDescription(string description);
         public TaskBuilderIF AddAssignedTeamMember(List<Users.TeamMember> assign);
+        public TaskBuilderIF AddChildren(List<TaskAbs> children);
 
 
     }

@@ -11,11 +11,15 @@ namespace SprintTrackerBasic.Tasks
     {
         protected List<TaskAbs> subtasks = new List<TaskAbs>();
 
+        public List<TaskAbs> GetSubtasks()
+        {
+            return subtasks;
+        }
         public TaskComposite()
         {
 
         }
-        public TaskComposite(TeamMember assignedPerson, string taskName, DateOnly dueDate)
+        public TaskComposite(TeamMember assignedPerson, string taskName, DateTime dueDate)
         {
             this.SetId();
             this.SetName(taskName);
@@ -23,7 +27,7 @@ namespace SprintTrackerBasic.Tasks
             this.SetDueDate(dueDate);
             this.subtasks = new List<TaskAbs>();
         }
-        public TaskComposite(TeamMember assignedPerson, string taskName, DateOnly dueDate, List<TaskAbs> children)
+        public TaskComposite(TeamMember assignedPerson, string taskName, DateTime dueDate, List<TaskAbs> children)
         {
             this.SetId();
             this.SetName(taskName);

@@ -1,4 +1,6 @@
-﻿using SprintTrackerBasic.Tasks;
+﻿using Microsoft.Msagl.Core.Geometry;
+using Microsoft.VisualBasic;
+using SprintTrackerBasic.Tasks;
 using SprintTrackerBasic.Users;
 using System;
 using System.Collections.Generic;
@@ -23,12 +25,12 @@ namespace SprintTrackerBasic
         // "New Task" button
         private void button1_Click(object sender, EventArgs e)
         {
-            /*TaskCreator tc = new TaskCreator(this);
+            TaskCreator tc = new TaskCreator(this);
             this.Enabled = false;
             tc.ShowDialog();
             this.Enabled = true;
 
-            Tasks.Task t1 = new Tasks.Task("hello");
+            /*Tasks.Task t1 = new Tasks.Task("hello");
             listBox1.Items.Add(t1.GetId() + " " + t1.GetName());*/
         }
 
@@ -53,9 +55,40 @@ namespace SprintTrackerBasic
 
         public void AddingTask(TaskAbs ta)
         {
-            listBox1.Items.Add(ta.GetName());
+            //listBox1.Items.Add(ta.GetName());
+        }
+
+        public void AddTaskToTreeView(TaskAbs task, TreeNode parentNode = null)
+        {
+            TreeNode currentNode = new TreeNode(task.GetName());
+
+            if (parentNode != null)
+            {
+                parentNode.Nodes.Add(currentNode);
+            }
+            else
+            {
+                treeView1.Nodes.Add(currentNode);
+            }
+            if (task is TaskComposite taskComposite)
+            {
+                foreach (TaskAbs subtask in taskComposite.GetSubtasks())
+                {
+                    AddTaskToTreeView(subtask, currentNode);
+                }
+            }
         }
 
 
+
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            CalendarView cv = new CalendarView();
+            cv.FormClosed += (s, args) => this.Show();
+            this.Hide();
+            cv.Show();
+
+        }
     }
 }

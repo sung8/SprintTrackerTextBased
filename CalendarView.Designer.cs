@@ -51,6 +51,22 @@
             label19 = new Label();
             label20 = new Label();
             label21 = new Label();
+            treeView1 = new System.Windows.Forms.TreeView();
+            treeView2 = new System.Windows.Forms.TreeView();
+            treeView3 = new System.Windows.Forms.TreeView();
+            treeView4 = new System.Windows.Forms.TreeView();
+            treeView5 = new System.Windows.Forms.TreeView();
+            treeView6 = new System.Windows.Forms.TreeView();
+            treeView7 = new System.Windows.Forms.TreeView();
+            treeView8 = new System.Windows.Forms.TreeView();
+            treeView9 = new System.Windows.Forms.TreeView();
+            treeView10 = new System.Windows.Forms.TreeView();
+            treeView11 = new System.Windows.Forms.TreeView();
+            treeView12 = new System.Windows.Forms.TreeView();
+            treeView13 = new System.Windows.Forms.TreeView();
+            treeView14 = new System.Windows.Forms.TreeView();
+            treeView15 = new System.Windows.Forms.TreeView();
+            label22 = new Label();
             SuspendLayout();
             // 
             // button2
@@ -287,11 +303,143 @@
             label21.TabIndex = 47;
             label21.Text = "Day";
             // 
+            // treeView1
+            // 
+            treeView1.Location = new Point(25, 219);
+            treeView1.Name = "treeView1";
+            treeView1.Size = new Size(113, 125);
+            treeView1.TabIndex = 54;
+            // 
+            // treeView2
+            // 
+            treeView2.Location = new Point(146, 219);
+            treeView2.Name = "treeView2";
+            treeView2.Size = new Size(113, 125);
+            treeView2.TabIndex = 55;
+            treeView2.AfterSelect += treeView2_AfterSelect;
+            // 
+            // treeView3
+            // 
+            treeView3.Location = new Point(271, 219);
+            treeView3.Name = "treeView3";
+            treeView3.Size = new Size(113, 125);
+            treeView3.TabIndex = 56;
+            // 
+            // treeView4
+            // 
+            treeView4.Location = new Point(399, 219);
+            treeView4.Name = "treeView4";
+            treeView4.Size = new Size(113, 125);
+            treeView4.TabIndex = 57;
+            // 
+            // treeView5
+            // 
+            treeView5.Location = new Point(526, 219);
+            treeView5.Name = "treeView5";
+            treeView5.Size = new Size(113, 125);
+            treeView5.TabIndex = 58;
+            // 
+            // treeView6
+            // 
+            treeView6.Location = new Point(650, 219);
+            treeView6.Name = "treeView6";
+            treeView6.Size = new Size(113, 125);
+            treeView6.TabIndex = 59;
+            // 
+            // treeView7
+            // 
+            treeView7.Location = new Point(779, 219);
+            treeView7.Name = "treeView7";
+            treeView7.Size = new Size(113, 125);
+            treeView7.TabIndex = 60;
+            // 
+            // treeView8
+            // 
+            treeView8.Location = new Point(779, 378);
+            treeView8.Name = "treeView8";
+            treeView8.Size = new Size(113, 125);
+            treeView8.TabIndex = 67;
+            // 
+            // treeView9
+            // 
+            treeView9.Location = new Point(650, 378);
+            treeView9.Name = "treeView9";
+            treeView9.Size = new Size(113, 125);
+            treeView9.TabIndex = 66;
+            // 
+            // treeView10
+            // 
+            treeView10.Location = new Point(526, 378);
+            treeView10.Name = "treeView10";
+            treeView10.Size = new Size(113, 125);
+            treeView10.TabIndex = 65;
+            // 
+            // treeView11
+            // 
+            treeView11.Location = new Point(399, 378);
+            treeView11.Name = "treeView11";
+            treeView11.Size = new Size(113, 125);
+            treeView11.TabIndex = 64;
+            // 
+            // treeView12
+            // 
+            treeView12.Location = new Point(271, 378);
+            treeView12.Name = "treeView12";
+            treeView12.Size = new Size(113, 125);
+            treeView12.TabIndex = 63;
+            // 
+            // treeView13
+            // 
+            treeView13.Location = new Point(146, 378);
+            treeView13.Name = "treeView13";
+            treeView13.Size = new Size(113, 125);
+            treeView13.TabIndex = 62;
+            // 
+            // treeView14
+            // 
+            treeView14.Location = new Point(25, 378);
+            treeView14.Name = "treeView14";
+            treeView14.Size = new Size(113, 125);
+            treeView14.TabIndex = 61;
+            // 
+            // treeView15
+            // 
+            treeView15.Location = new Point(23, 548);
+            treeView15.Name = "treeView15";
+            treeView15.Size = new Size(517, 67);
+            treeView15.TabIndex = 68;
+            // 
+            // label22
+            // 
+            label22.AutoSize = true;
+            label22.Font = new Font("Segoe UI", 15F, FontStyle.Regular, GraphicsUnit.Point);
+            label22.Location = new Point(23, 517);
+            label22.Name = "label22";
+            label22.Size = new Size(160, 28);
+            label22.TabIndex = 69;
+            label22.Text = "Future/Past Tasks";
+            // 
             // CalendarView
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(901, 583);
+            ClientSize = new Size(928, 636);
+            Controls.Add(label22);
+            Controls.Add(treeView15);
+            Controls.Add(treeView8);
+            Controls.Add(treeView9);
+            Controls.Add(treeView10);
+            Controls.Add(treeView11);
+            Controls.Add(treeView12);
+            Controls.Add(treeView13);
+            Controls.Add(treeView14);
+            Controls.Add(treeView7);
+            Controls.Add(treeView6);
+            Controls.Add(treeView5);
+            Controls.Add(treeView4);
+            Controls.Add(treeView3);
+            Controls.Add(treeView2);
+            Controls.Add(treeView1);
             Controls.Add(label15);
             Controls.Add(label16);
             Controls.Add(label17);
@@ -347,5 +495,21 @@
         private Label label19;
         private Label label20;
         private Label label21;
+        private System.Windows.Forms.TreeView treeView1;
+        private System.Windows.Forms.TreeView treeView2;
+        private System.Windows.Forms.TreeView treeView3;
+        private System.Windows.Forms.TreeView treeView4;
+        private System.Windows.Forms.TreeView treeView5;
+        private System.Windows.Forms.TreeView treeView6;
+        private System.Windows.Forms.TreeView treeView7;
+        private System.Windows.Forms.TreeView treeView8;
+        private System.Windows.Forms.TreeView treeView9;
+        private System.Windows.Forms.TreeView treeView10;
+        private System.Windows.Forms.TreeView treeView11;
+        private System.Windows.Forms.TreeView treeView12;
+        private System.Windows.Forms.TreeView treeView13;
+        private System.Windows.Forms.TreeView treeView14;
+        private System.Windows.Forms.TreeView treeView15;
+        private Label label22;
     }
 }

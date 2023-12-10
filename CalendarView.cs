@@ -41,5 +41,10 @@ namespace SprintTrackerBasic
                 }
             }
         }
+
+        private void treeView2_AfterSelect(object sender, TreeViewEventArgs e)
+        {
+
+        }
     }
 }

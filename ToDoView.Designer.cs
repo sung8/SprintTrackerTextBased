@@ -33,9 +33,10 @@
             label2 = new Label();
             label1 = new Label();
             label3 = new Label();
-            listBox1 = new ListBox();
             listBox2 = new ListBox();
             listBox3 = new ListBox();
+            button3 = new Button();
+            treeView1 = new System.Windows.Forms.TreeView();
             SuspendLayout();
             // 
             // button1
@@ -94,15 +95,6 @@
             label3.TabIndex = 5;
             label3.Text = "Done";
             // 
-            // listBox1
-            // 
-            listBox1.FormattingEnabled = true;
-            listBox1.ItemHeight = 15;
-            listBox1.Location = new Point(31, 172);
-            listBox1.Name = "listBox1";
-            listBox1.Size = new Size(207, 259);
-            listBox1.TabIndex = 6;
-            // 
             // listBox2
             // 
             listBox2.FormattingEnabled = true;
@@ -121,14 +113,35 @@
             listBox3.Size = new Size(207, 259);
             listBox3.TabIndex = 8;
             // 
+            // button3
+            // 
+            button3.BackColor = SystemColors.ActiveCaptionText;
+            button3.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            button3.ForeColor = SystemColors.HighlightText;
+            button3.Location = new Point(176, 21);
+            button3.Name = "button3";
+            button3.Size = new Size(113, 46);
+            button3.TabIndex = 9;
+            button3.Text = "Calendar";
+            button3.UseVisualStyleBackColor = false;
+            button3.Click += button3_Click;
+            // 
+            // treeView1
+            // 
+            treeView1.Location = new Point(31, 172);
+            treeView1.Name = "treeView1";
+            treeView1.Size = new Size(208, 259);
+            treeView1.TabIndex = 10;
+            // 
             // ToDoView
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 450);
+            Controls.Add(treeView1);
+            Controls.Add(button3);
             Controls.Add(listBox3);
             Controls.Add(listBox2);
-            Controls.Add(listBox1);
             Controls.Add(label3);
             Controls.Add(label1);
             Controls.Add(label2);
@@ -147,8 +160,9 @@
         private Label label2;
         private Label label1;
         private Label label3;
-        private ListBox listBox1;
         private ListBox listBox2;
         private ListBox listBox3;
+        private Button button3;
+        private System.Windows.Forms.TreeView treeView1;
     }
 }

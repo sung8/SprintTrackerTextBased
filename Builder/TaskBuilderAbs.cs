@@ -14,6 +14,7 @@ namespace SprintTrackerBasic.Builder
         public string name { get; set; }
         public DateTime date { get; set; }
         public string desc { get; set; }
+        public List<TaskAbs> subTask { get; set; }
         public List<Users.TeamMember> assigned { get; set; }
 
         public TaskBuilderIF SetTaskName(string taskName)
@@ -46,6 +47,12 @@ namespace SprintTrackerBasic.Builder
                 return taskBuilder;
             else
                 return compositeBuilder;
+        }
+
+        public TaskBuilderIF AddChildren(List<TaskAbs> children)
+        {
+            subTask = children;
+            return this;
         }
         public abstract TaskAbs Build();
 

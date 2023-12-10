@@ -34,6 +34,13 @@ namespace SprintTrackerBasic.Tasks
             this.parentTask = task;
         }
 
+        public Issue(string title, string desc, Status status)
+        {
+            this.name = title;
+            this.desc = desc;
+            this.currStatus = status;
+        }
+
         public string GetName()
         {
             return this.name;

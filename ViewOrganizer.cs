@@ -14,6 +14,8 @@ namespace SprintTrackerBasic
         private List<Users.Team> teams = new List<Users.Team>();
         private List<Users.TeamMember> assigned = new List<Users.TeamMember>();
         private static ViewOrganizer instance = new ViewOrganizer();
+        private List<TaskAbs> allTasks = new List<TaskAbs>();
+
 
         private ViewOrganizer() { }
 
@@ -26,6 +28,11 @@ namespace SprintTrackerBasic
         public List<Users.Team> GetTeams()
         {
             return teams;
+        }
+
+        public void AddTasks(TaskAbs t)
+        {
+            allTasks.Add(t);
         }
 
         /*
@@ -45,7 +52,9 @@ namespace SprintTrackerBasic
                  .SetTaskName(tn)
                  .SetDueDate(dd)
                  .SetDescription(d)
+                 .AddAssignedTeamMember(a)
                  .Build();
+              
                 return task;
             }
             else
@@ -55,6 +64,8 @@ namespace SprintTrackerBasic
                  .SetTaskName(tn)
                  .SetDueDate(dd)
                  .SetDescription(d)
+                 .AddAssignedTeamMember(a)
+                 .AddChildren(ta)
                  .Build();
                 return task;
             }

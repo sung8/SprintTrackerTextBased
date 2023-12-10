@@ -13,7 +13,7 @@ namespace SprintTrackerBasic.Builder
         public CompositeTaskBuilder() { }
         public override TaskAbs Build()
         {
-            return new Tasks.TaskComposite();
+            return new Tasks.TaskComposite(assigned[0], name, date, subTask);
         }
 
 

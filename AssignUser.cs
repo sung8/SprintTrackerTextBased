@@ -19,6 +19,7 @@ namespace SprintTrackerBasic
         private bool s1 = false;
         private bool s2 = false;
         private TaskCreator creator;
+        private Issues i;
         public AssignUser(TaskCreator tc)
         {
             creator = tc;
@@ -26,6 +27,12 @@ namespace SprintTrackerBasic
             InitializeComboBox();
         }
 
+        public AssignUser(Issues i)
+        {
+            this.i = i;
+            InitializeComponent();
+            InitializeComboBox();
+        }
         private void InitializeComboBox()
         {
 
@@ -58,7 +65,14 @@ namespace SprintTrackerBasic
         {
             if (s1 && s2)
             {
-                creator.AddingUser(vo.GetTeams()[tindex].GetTeamMembers()[mindex]);
+                if (creator != null)
+                {
+                    creator.AddingUser(vo.GetTeams()[tindex].GetTeamMembers()[mindex]);
+                }
+                else
+                {
+                    i.AddingUser(vo.GetTeams()[tindex].GetTeamMembers()[mindex]);
+                }
                 this.Close();
             }
         }

@@ -14,11 +14,13 @@ namespace SprintTrackerBasic
 {
     public partial class TaskCreator : Form
     {
+        private TaskCreator parent;
         private string taskName = "";
         private DateTime dueDate;
-        private string desc ="";
+        private string desc = "";
         private List<Users.TeamMember> assigned = new List<Users.TeamMember>();
         private List<TaskAbs> subTask = new List<TaskAbs>();
+        private List<Issue> issues = new List<Issue>();
         ViewOrganizer vo = ViewOrganizer.GetInstance();
         private ToDoView todoview;
 
@@ -27,6 +29,13 @@ namespace SprintTrackerBasic
             InitializeComponent();
             InitializeDateDropdown();
             todoview = tdv;
+        }
+
+        public TaskCreator(TaskCreator parent)
+        {
+            InitializeComponent();
+            InitializeDateDropdown();
+            this.parent = parent;
         }
 
         private void InitializeDateDropdown()
@@ -77,14 +86,45 @@ namespace SprintTrackerBasic
                 assigned.Add(m);
             }
         }
+        public void AddIssue(Issue issue)
+        {
+            issues.Add(issue);
+        }
 
 
         //create task button
         private void button3_Click(object sender, EventArgs e)
         {
             TaskAbs task = vo.ParseData(taskName, dueDate, desc, assigned, subTask);
-            todoview.AddingTask(task);
+            if (parent == null)
+            {
+                vo.AddTasks(task);
+
+                todoview.AddingTask(task);
+                todoview.AddTaskToTreeView(task);
+            }
+            else
+            {
+                parent.subTask.Add(task);
+            }
             this.Close();
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            TaskCreator tc = new TaskCreator(this);
+            this.Enabled = false;
+            tc.ShowDialog();
+            this.Enabled = true;
+
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            Issues i = new Issues(this);
+            this.Enabled = false;
+            i.ShowDialog();
+            this.Enabled = true;
         }
     }
 }

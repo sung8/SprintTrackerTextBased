@@ -13,7 +13,7 @@ namespace SprintTrackerBasic.Tasks
         {
 
         }
-        public Task(TeamMember assignedPerson, string taskName, DateOnly dueDate)
+        public Task(TeamMember assignedPerson, string taskName, DateTime dueDate)
         {
             this.SetId();
             this.SetName(taskName);

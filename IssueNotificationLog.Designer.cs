@@ -46,9 +46,9 @@
             label1.Font = new Font("Segoe UI Semibold", 18F, FontStyle.Bold, GraphicsUnit.Point);
             label1.Location = new Point(12, 31);
             label1.Name = "label1";
-            label1.Size = new Size(267, 32);
+            label1.Size = new Size(289, 32);
             label1.TabIndex = 1;
-            label1.Text = "Issue Notificion History";
+            label1.Text = "Issue Notification History";
             // 
             // IssueNotificationLog
             // 

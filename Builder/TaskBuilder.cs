@@ -16,7 +16,8 @@ namespace SprintTrackerBasic.Builder
 
         public override TaskAbs Build()
         {
-            return new Tasks.Task();
+            
+            return new Tasks.Task(assigned[0], name, date);
         }
     }
 }

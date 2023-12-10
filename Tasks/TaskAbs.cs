@@ -12,7 +12,7 @@ namespace SprintTrackerBasic.Tasks
     {
         private int id;
         private string name;
-        private DateOnly dueDate;
+        private DateTime dueDate;
         private TaskAbs? parent;
         private TeamMember assignedMember;
         public List<Issue> issues { get; set; } = new List<Issue>();
@@ -22,7 +22,7 @@ namespace SprintTrackerBasic.Tasks
         {
         }
 
-        public TaskAbs(TeamMember assignedPerson, string taskName, DateOnly dueDate)
+        public TaskAbs(TeamMember assignedPerson, string taskName, DateTime dueDate)
         {
             this.assignedMember = assignedPerson;
             this.name = taskName;
@@ -54,11 +54,11 @@ namespace SprintTrackerBasic.Tasks
             this.parent = parent;
         }
 
-        public void SetDueDate(DateOnly date)
+        public void SetDueDate(DateTime date)
         {
             this.dueDate = date;
         }
-        public DateOnly GetDueDate()
+        public DateTime GetDueDate()
         {
             return this.dueDate;
         }
