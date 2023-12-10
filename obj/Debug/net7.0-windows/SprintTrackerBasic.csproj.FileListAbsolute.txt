@@ -48,7 +48,6 @@ C:\SWENG-421-LABS\Final-Project-Sprint-Tracker\SprintTrackerTextBased\obj\Debug\
 C:\SWENG-421-LABS\Final-Project-Sprint-Tracker\SprintTrackerTextBased\obj\Debug\net7.0-windows\SprintTrackerBasic.AssignUser.resources
 C:\SWENG-421-LABS\Final-Project-Sprint-Tracker\SprintTrackerTextBased\obj\Debug\net7.0-windows\SprintTrackerBasic.CalendarView.resources
 C:\SWENG-421-LABS\Final-Project-Sprint-Tracker\SprintTrackerTextBased\obj\Debug\net7.0-windows\SprintTrackerBasic.TaskCreator.resources
-C:\SWENG-421-LABS\Final-Project-Sprint-Tracker\SprintTrackerTextBased\obj\Debug\net7.0-windows\SprintTrackerBasic.TreeView.resources
 C:\SWENG-421-LABS\Final-Project-Sprint-Tracker\SprintTrackerTextBased\obj\Debug\net7.0-windows\SprintTrackerBasic.csproj.CopyComplete
 D:\SWENG 421Projects\SprintTrackerTextBased\obj\Debug\net7.0-windows\SprintTrackerBasic.IssueNotificationLog.resources
 D:\SWENG 421Projects\SprintTrackerTextBased\obj\Debug\net7.0-windows\SprintTrackerBasic.Issues.resources

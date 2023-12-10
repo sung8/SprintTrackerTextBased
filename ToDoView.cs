@@ -44,10 +44,10 @@ namespace SprintTrackerBasic
             this.Enabled = true;
         }
 
-        public void AddingTask(TaskAbs ta)
+/*        public void AddingTask(TaskAbs ta)
         {
             //listBox1.Items.Add(ta.GetName());
-        }
+        }*/
 
         /*public void AddTaskToTreeView(TaskAbs task, TreeNode parentNode = null)
         {

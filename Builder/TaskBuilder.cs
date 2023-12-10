@@ -12,8 +12,6 @@ namespace SprintTrackerBasic.Builder
 
         public TaskBuilder() { }
 
-
-
         public override TaskAbs Build()
         {
             

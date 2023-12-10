@@ -40,6 +40,7 @@ namespace SprintTrackerBasic.Tasks
             {
                 this.currState = parent.GetCategory();
             }
+            this.SetId();
         }
 
         public TaskAbs(TeamMember assignedPerson, string taskName, DateTime dueDate, Category progress)
@@ -48,6 +49,7 @@ namespace SprintTrackerBasic.Tasks
             this.name = taskName;
             this.dueDate = dueDate;
             this.currState = progress;
+            this.SetId();
         }
 
         public void SetCategory(Category progress)
