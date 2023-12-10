@@ -22,6 +22,7 @@ namespace SprintTrackerBasic
         public ToDoView()
         {
             InitializeComponent();
+            ColorNodesInAllTreeViews();
         }
 
 
@@ -73,13 +74,15 @@ namespace SprintTrackerBasic
         public void AddTaskToTreeView(TaskAbs task, TreeNode parentNode = null)
         {
             TreeNode currentNode = new TreeNode(task.GetId() + ":" + task.GetName());
-
+            
             if (parentNode != null)
             {
                 parentNode.Nodes.Add(currentNode);
             }
             else
             {
+                ViewOrganizer vo = ViewOrganizer.GetInstance();
+                vo.AddByCategory(task);
                 // Determine which TreeView to add the task based on its Category
                 if (task.GetCategory() == Category.Todo)
                 {
@@ -103,6 +106,42 @@ namespace SprintTrackerBasic
                 }
             }
         }
+
+
+        private void ColorNodesInTreeView(TreeView treeView)
+        {
+            foreach (TreeNode rootNode in treeView.Nodes)
+            {
+                ColorNodes(rootNode);
+            }
+        }
+
+        private void ColorNodes(TreeNode node)
+        {
+            foreach (TreeNode childNode in node.Nodes)
+            {
+                ColorNodes(childNode);
+
+                if (childNode.Tag is TaskAbs task && task.IsUrgent())
+                {
+                    childNode.BackColor = Color.Red; // Set the desired color
+                }
+                else
+                {
+                    childNode.BackColor = Color.White; // Reset to default color
+                }
+            }
+        }
+
+        // Call this method for each TreeView
+        private void ColorNodesInAllTreeViews()
+        {
+            ColorNodesInTreeView(treeView1);
+            ColorNodesInTreeView(treeView2);
+            ColorNodesInTreeView(treeView3);
+
+        }
+
 
         // calendar view
         private void button3_Click(object sender, EventArgs e)

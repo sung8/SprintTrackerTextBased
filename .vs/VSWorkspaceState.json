@@ -1,10 +1,7 @@
 {
   "ExpandedNodes": [
     "",
-    "\\bin",
-    "\\Builder",
-    "\\Decorated",
-    "\\Tasks"
+    "\\bin"
   ],
   "SelectedNode": "\\SprintTrackerBasic.sln",
   "PreviewInSolutionExplorer": false

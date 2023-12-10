@@ -31,7 +31,8 @@ namespace SprintTrackerBasic
             info.Add("Task Name: " + currTask.GetName());
             info.Add("Task Owner: " + currTask.GetAssignedMember().GetName() + "(" + currTask.GetAssignedMember().GetAssignedTeam().GetName() + ")");
             info.Add("Category: " + currTask.GetCategory().ToString());
-            
+            info.Add("Complete By: " + currTask.GetDueDate().ToString());
+
 
             if (currTask is TaskComposite)
             {

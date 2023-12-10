@@ -13,5 +13,10 @@ namespace SprintTrackerBasic.Decorated
         {
 
         }
+
+        public override bool IsUrgent()
+        {
+            return true;
+        }
     }
 }

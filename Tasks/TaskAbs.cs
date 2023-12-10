@@ -154,6 +154,11 @@ namespace SprintTrackerBasic.Tasks
         //public abstract void Execute();
         //public abstract void Iterate();
         public abstract string Iterate();
+
+        public virtual bool IsUrgent()
+        {
+            return false;
+        }
     }
 
 }

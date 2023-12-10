@@ -16,9 +16,9 @@ namespace SprintTrackerBasic
         private List<Users.TeamMember> assigned = new List<Users.TeamMember>();
         private static ViewOrganizer instance = new ViewOrganizer();
         private List<TaskAbs> allTasks = new List<TaskAbs>();
-        /*List<TaskAbs> tasksTodo = new List<TaskAbs>();
-        List<TaskAbs> tasksDoing = new List<TaskAbs>();
-        List<TaskAbs> tasksDone = new List<TaskAbs>();*/
+        private List<TaskAbs> tasksTodo = new List<TaskAbs>();
+        private List<TaskAbs> tasksDoing = new List<TaskAbs>();
+        private List<TaskAbs> tasksDone = new List<TaskAbs>();
 
         private ViewOrganizer() { }
 
@@ -32,7 +32,22 @@ namespace SprintTrackerBasic
         {
             return teams;
         }
-
+        public void AddByCategory(TaskAbs task)
+        {
+            if (task.GetCategory() == TaskAbs.Category.Todo)
+            {
+                tasksTodo.Add(task);
+            } 
+            
+            else if (task.GetCategory() == TaskAbs.Category.Doing) 
+            {
+                tasksDoing.Add(task);
+            }
+            else if (task.GetCategory() == TaskAbs.Category.Done)
+            {
+                tasksDone.Add(task);
+            }
+        }
         public void AddTasks(TaskAbs t)
         {
             allTasks.Add(t);
