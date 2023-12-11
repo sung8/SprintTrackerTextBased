@@ -1,6 +1,4 @@
-﻿using Microsoft.Msagl.Drawing;
-using SprintTrackerBasic.Tasks;
-using SprintTrackerBasic.Users;
+﻿using SprintTrackerBasic.Tasks;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -13,47 +11,140 @@ using System.Windows.Forms;
 
 namespace SprintTrackerBasic
 {
-    public partial class TaskCreator : Form
+    public partial class TaskEdit : Form
     {
-        private TaskCreator parent;
-        private string taskName = "";
+        TaskAbs taskToEdit;
+
+        private TaskEdit parent;
+        private string taskName;
         private DateTime dueDate;
-        private string desc = "";
-        private List<Users.TeamMember> assigned = new List<Users.TeamMember>();
+        private string desc;
         private List<TaskAbs> subTask = new List<TaskAbs>();
         private List<Issue> issues = new List<Issue>();
         ViewOrganizer vo = ViewOrganizer.GetInstance();
-        private ToDoView todoview;
 
         private TaskAbs.Category currState;
         private bool isUrgent = false;
         private bool isMeeting = false;
-
-        TaskAbs taskToEdit;
-
-        public TaskCreator(ToDoView tdv)
+        TaskInfo taskInfo;
+        public TaskEdit(TaskAbs task, TaskInfo ti)
         {
             InitializeComponent();
+            this.taskToEdit = task;
+            taskName = task.GetName();
+            dueDate = task.GetDueDate();
+            desc = task.GetDesc();
             InitializeDateDropdown();
-            todoview = tdv;
-            InitializeEventHandlers();
+            LoadData();
+            this.taskInfo = ti;
         }
 
-        public TaskCreator(TaskCreator parent)
+        /*public TaskEdit(TaskEdit parent)
         {
             InitializeComponent();
-            InitializeDateDropdown();
             this.parent = parent;
+            InitializeDateDropdown();
+            LoadData();
+        }*/
+
+        private void LoadData()
+        {
+            textBox1.Text = taskToEdit.GetName();
+            //comboBox2.Text = taskToEdit.GetDueDate().ToString();
+            // Find the index of the due date in the combo box items
+            int selectedIndex = comboBox2.FindStringExact(taskToEdit.GetDueDate().ToShortDateString());
+            // Set the selected index
+            comboBox2.SelectedIndex = selectedIndex;
+            if (taskToEdit.GetCategory() == TaskAbs.Category.Todo)
+            {
+                radioButton1.Checked = true;
+                radioButton2.Checked = false;
+                radioButton3.Checked = false;
+            }
+            else if (taskToEdit.GetCategory() == TaskAbs.Category.Doing)
+            {
+                radioButton1.Checked = false;
+                radioButton2.Checked = true;
+                radioButton3.Checked = false;
+            }
+            else if (taskToEdit.GetCategory() == TaskAbs.Category.Done)
+            {
+                radioButton1.Checked = false;
+                radioButton2.Checked = false;
+                radioButton3.Checked = true;
+            }
+            textBox3.Text = taskToEdit.GetDesc();
             InitializeEventHandlers();
         }
 
-        public TaskCreator(TaskAbs taskToEdit)
+        private void InitializeDateDropdown()
         {
-            InitializeComponent();
-            InitializeDateDropdown();
-            this.taskToEdit = taskToEdit;
-            InitializeEventHandlers();
+            comboBox2.DropDownStyle = ComboBoxStyle.DropDownList;
+
+            DateTime currentDate = DateTime.Now;
+            DateTime pastMonth = currentDate.AddDays(-30);
+            for (int i = 0; i < 60; i++)
+            {
+                DateTime dateToAdd = pastMonth.AddDays(i);
+                comboBox2.Items.Add(dateToAdd.ToShortDateString());
+            }
         }
+
+        private void textBox1_TextChanged(object sender, EventArgs e)
+        {
+            taskName = textBox1.Text;
+        }
+
+
+        private void comboBox2_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (DateTime.TryParse(comboBox2.SelectedItem.ToString(), out DateTime selectedDate))
+            {
+                dueDate = selectedDate;
+            }
+        }
+
+        private void textBox3_TextChanged(object sender, EventArgs e)
+        {
+            desc = textBox3.Text;
+        }
+
+        public void AddIssue(Issue issue)
+        {
+            issues.Add(issue);
+        }
+
+        // save changes 
+        private void button3_1_Click(object sender, MouseEventArgs e)
+        {
+            taskToEdit.SetName(taskName);
+            taskToEdit.SetDueDate(dueDate);
+            taskToEdit.SetDesc(desc);
+            taskToEdit.SetCategory(currState);
+            taskInfo.Refresh();
+            this.Close();
+        }
+
+        // add subtask
+        private void button1_1_Click(object sender, EventArgs e)
+        {
+            TaskCreator te = new TaskCreator(taskToEdit);
+            this.Enabled = false;
+            te.ShowDialog();
+            this.Enabled = true;
+        }
+
+        // add issue
+        private void button2_1_Click(object sender, EventArgs e)
+        {
+            TaskCreator te = new TaskCreator(taskToEdit);
+            Issues i = new Issues(te);
+            this.Enabled = false;
+            i.ShowDialog();
+            this.Enabled = true;
+        }
+
+
 
         private void InitializeEventHandlers()
         {
@@ -137,94 +228,5 @@ namespace SprintTrackerBasic
             }
         }
 
-        private void InitializeDateDropdown()
-        {
-            comboBox2.DropDownStyle = ComboBoxStyle.DropDownList;
-
-            DateTime currentDate = DateTime.Now;
-            DateTime pastMonth = currentDate.AddDays(-30);
-            for (int i = 0; i < 60; i++)
-            {
-                DateTime dateToAdd = pastMonth.AddDays(i);
-                comboBox2.Items.Add(dateToAdd.ToShortDateString());
-            }
-        }
-
-        private void textBox1_TextChanged(object sender, EventArgs e)
-        {
-            taskName = textBox1.Text;
-        }
-
-
-        private void comboBox2_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            if (DateTime.TryParse(comboBox2.SelectedItem.ToString(), out DateTime selectedDate))
-            {
-                dueDate = selectedDate;
-            }
-        }
-
-        private void textBox3_TextChanged(object sender, EventArgs e)
-        {
-            desc = textBox3.Text;
-        }
-
-        private void button4_Click(object sender, EventArgs e)
-        {
-            AssignUser au = new AssignUser(this);
-            this.Enabled = false;
-            au.ShowDialog();
-            this.Enabled = true;
-        }
-
-        public void AddingUser(TeamMember m)
-        {
-            if (!assigned.Contains(m))
-            {
-                listBox1.Items.Add("Name: " + m.name + ", Team: " + m.assignedTeam.GetName());
-                assigned.Add(m);
-            }
-        }
-        public void AddIssue(Issue issue)
-        {
-            issues.Add(issue);
-        }
-
-
-        //create task button
-        private void button3_Click(object sender, EventArgs e)
-        {
-            TaskAbs task = vo.ParseData(taskName, dueDate, desc, assigned, subTask, currState);
-            if (parent == null)
-            {
-                vo.AddTasks(task);
-
-                //todoview.AddingTask(task);
-                todoview.AddTaskToTreeView(task);
-            }
-            else
-            {
-                parent.subTask.Add(task);
-            }
-            this.Close();
-        }
-
-
-        private void button1_Click(object sender, EventArgs e)
-        {
-            TaskCreator tc = new TaskCreator(this);
-            this.Enabled = false;
-            tc.ShowDialog();
-            this.Enabled = true;
-
-        }
-
-        private void button2_Click(object sender, EventArgs e)
-        {
-            Issues i = new Issues(this);
-            this.Enabled = false;
-            i.ShowDialog();
-            this.Enabled = true;
-        }
     }
 }

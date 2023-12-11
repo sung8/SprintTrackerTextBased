@@ -34,9 +34,9 @@
             label1 = new Label();
             label3 = new Label();
             button3 = new Button();
-            treeView1 = new System.Windows.Forms.TreeView();
-            treeView2 = new System.Windows.Forms.TreeView();
-            treeView3 = new System.Windows.Forms.TreeView();
+            treeView1 = new TreeView();
+            treeView2 = new TreeView();
+            treeView3 = new TreeView();
             button4 = new Button();
             label4 = new Label();
             SuspendLayout();
@@ -173,6 +173,8 @@
             Controls.Add(button1);
             Name = "ToDoView";
             Text = "ToDoView";
+            EnabledChanged += ToDoView_EnabledChanged;
+            VisibleChanged += ToDoView_VisibleChanged;
             ResumeLayout(false);
             PerformLayout();
         }
@@ -185,9 +187,9 @@
         private Label label1;
         private Label label3;
         private Button button3;
-        private System.Windows.Forms.TreeView treeView1;
-        private System.Windows.Forms.TreeView treeView2;
-        private System.Windows.Forms.TreeView treeView3;
+        private TreeView treeView1;
+        private TreeView treeView2;
+        private TreeView treeView3;
         private Button button4;
         private Label label4;
     }

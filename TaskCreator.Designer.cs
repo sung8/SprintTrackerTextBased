@@ -49,10 +49,10 @@
             radioButton1 = new RadioButton();
             label8 = new Label();
             groupBox2 = new GroupBox();
+            radioButton4 = new RadioButton();
             radioButton5 = new RadioButton();
             radioButton6 = new RadioButton();
             groupBox3 = new GroupBox();
-            radioButton4 = new RadioButton();
             radioButton7 = new RadioButton();
             label9 = new Label();
             label10 = new Label();
@@ -286,10 +286,21 @@
             groupBox2.TabIndex = 24;
             groupBox2.TabStop = false;
             // 
+            // radioButton4
+            // 
+            radioButton4.AutoSize = true;
+            radioButton4.Location = new Point(6, 22);
+            radioButton4.Name = "radioButton4";
+            radioButton4.Size = new Size(42, 19);
+            radioButton4.TabIndex = 1;
+            radioButton4.TabStop = true;
+            radioButton4.Text = "Yes";
+            radioButton4.UseVisualStyleBackColor = true;
+            // 
             // radioButton5
             // 
             radioButton5.AutoSize = true;
-            radioButton5.Location = new Point(107, 27);
+            radioButton5.Location = new Point(107, 22);
             radioButton5.Name = "radioButton5";
             radioButton5.Size = new Size(41, 19);
             radioButton5.TabIndex = 1;
@@ -318,17 +329,6 @@
             groupBox3.Size = new Size(198, 52);
             groupBox3.TabIndex = 25;
             groupBox3.TabStop = false;
-            // 
-            // radioButton4
-            // 
-            radioButton4.AutoSize = true;
-            radioButton4.Location = new Point(7, 27);
-            radioButton4.Name = "radioButton4";
-            radioButton4.Size = new Size(42, 19);
-            radioButton4.TabIndex = 1;
-            radioButton4.TabStop = true;
-            radioButton4.Text = "Yes";
-            radioButton4.UseVisualStyleBackColor = true;
             // 
             // radioButton7
             // 

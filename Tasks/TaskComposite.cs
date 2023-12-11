@@ -1,4 +1,5 @@
-﻿using SprintTrackerBasic.Users;
+﻿using Microsoft.Msagl.Core.Geometry;
+using SprintTrackerBasic.Users;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -28,6 +29,17 @@ namespace SprintTrackerBasic.Tasks
             this.subtasks = new List<TaskAbs>();
             this.SetCategory(progress);
         }
+
+        public TaskComposite(TeamMember assignedPerson, string taskName, DateTime dueDate, Category progress, string desc)
+        {
+            this.SetId();
+            this.SetName(taskName);
+            this.SetAssignedMember(assignedPerson);
+            this.SetDueDate(dueDate);
+            this.subtasks = new List<TaskAbs>();
+            this.SetCategory(progress);
+            this.SetDesc(desc);
+        }
         public TaskComposite(TeamMember assignedPerson, string taskName, DateTime dueDate, List<TaskAbs> children, Category progress)
         {
             this.SetId();
@@ -37,6 +49,18 @@ namespace SprintTrackerBasic.Tasks
             this.subtasks = children;
             this.SetCategory(progress);
         }
+
+        public TaskComposite(TeamMember assignedPerson, string taskName, DateTime dueDate, List<TaskAbs> children, Category progress, string desc)
+        {
+            this.SetId();
+            this.SetName(taskName);
+            this.SetAssignedMember(assignedPerson);
+            this.SetDueDate(dueDate);
+            this.subtasks = children;
+            this.SetCategory(progress);
+            this.SetDesc(desc);
+        }
+
 
         public void AddChild(TaskAbs task)
         {

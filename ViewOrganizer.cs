@@ -48,6 +48,11 @@ namespace SprintTrackerBasic
                 tasksDone.Add(task);
             }
         }
+
+        public List<TaskAbs> GetAllCurrentTasks()
+        {
+            return allTasks;
+        }
         public void AddTasks(TaskAbs t)
         {
             allTasks.Add(t);

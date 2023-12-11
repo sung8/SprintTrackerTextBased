@@ -18,6 +18,7 @@ namespace SprintTrackerBasic.Tasks
         }
         private int id;
         private string name;
+        private string desc;
         private DateTime dueDate;
         private TaskAbs? parent;
         private TeamMember assignedMember;
@@ -43,12 +44,13 @@ namespace SprintTrackerBasic.Tasks
             this.SetId();
         }
 
-        public TaskAbs(TeamMember assignedPerson, string taskName, DateTime dueDate, Category progress)
+        public TaskAbs(TeamMember assignedPerson, string taskName, DateTime dueDate, Category progress, string desc)
         {
             this.assignedMember = assignedPerson;
             this.name = taskName;
             this.dueDate = dueDate;
             this.currState = progress;
+            this.desc = desc;
             this.SetId();
         }
 
@@ -77,6 +79,14 @@ namespace SprintTrackerBasic.Tasks
         public void SetName(string newName)
         {
             this.name = newName;
+        }
+        public string GetDesc()
+        {
+            return this.desc;
+        }
+        public void SetDesc(string newDesc)
+        {
+            this.desc = newDesc;
         }
         public TaskAbs? GetParent()
         {

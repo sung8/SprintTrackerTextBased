@@ -29,7 +29,7 @@ namespace SprintTrackerBasic
             List<string> info = new List<string>();
             info.Add("Task ID: " + currTask.GetId().ToString());
             info.Add("Task Name: " + currTask.GetName());
-            info.Add("Task Owner: " + currTask.GetAssignedMember().GetName() + "(" + currTask.GetAssignedMember().GetAssignedTeam().GetName() + ")");
+            info.Add("Task Owner: " + currTask.GetAssignedMember().GetName() + " (Team Name: " + currTask.GetAssignedMember().GetAssignedTeam().GetName() + ")");
             info.Add("Category: " + currTask.GetCategory().ToString());
             info.Add("Complete By: " + currTask.GetDueDate().ToString());
 
@@ -45,6 +45,11 @@ namespace SprintTrackerBasic
 
             // Set the label text
             label1.Text = text;
+        }
+
+        public void Refresh()
+        {
+            UpdateTaskInfo();
         }
 
         public void GraphTask(TaskComposite rootTask)
@@ -110,7 +115,10 @@ namespace SprintTrackerBasic
         // Edit
         private void button2_Click(object sender, EventArgs e)
         {
-
+            TaskEdit editForm = new TaskEdit(currTask, this);
+            this.Enabled = false;
+            editForm.ShowDialog();
+            this.Enabled = true;
         }
     }
 }
