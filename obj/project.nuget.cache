@@ -1,12 +1,12 @@
 {
   "version": 2,
-  "dgSpecHash": "8kqurbCV5Stn4In/fcC5hp0unF6EgPndiXQ5eCXS9xN9bNRm4R+Jt8r6LebDYa/fOCpcniUt6pQNLBC5tDWMJw==",
+  "dgSpecHash": "vWiJDrPitYIxfbfAtTbT93D/otvUdzA7i1L+Qt0dzLInoY5Rpp6BqBxV5TdyYg2vNjiA+yCvBaEOzcZI2IBLLg==",
   "success": true,
-  "projectFilePath": "C:\\SWENG-421-LABS\\Final-Project-Sprint-Tracker\\SprintTrackerTextBased\\SprintTrackerBasic.csproj",
+  "projectFilePath": "D:\\SWENG 421Projects\\SprintTrackerTextBased\\SprintTrackerBasic.csproj",
   "expectedPackageFiles": [
-    "C:\\Users\\Lena\\.nuget\\packages\\automaticgraphlayout\\1.1.12\\automaticgraphlayout.1.1.12.nupkg.sha512",
-    "C:\\Users\\Lena\\.nuget\\packages\\automaticgraphlayout.drawing\\1.1.12\\automaticgraphlayout.drawing.1.1.12.nupkg.sha512",
-    "C:\\Users\\Lena\\.nuget\\packages\\automaticgraphlayout.graphviewergdi\\1.1.12\\automaticgraphlayout.graphviewergdi.1.1.12.nupkg.sha512"
+    "C:\\Users\\fyrel\\.nuget\\packages\\automaticgraphlayout\\1.1.12\\automaticgraphlayout.1.1.12.nupkg.sha512",
+    "C:\\Users\\fyrel\\.nuget\\packages\\automaticgraphlayout.drawing\\1.1.12\\automaticgraphlayout.drawing.1.1.12.nupkg.sha512",
+    "C:\\Users\\fyrel\\.nuget\\packages\\automaticgraphlayout.graphviewergdi\\1.1.12\\automaticgraphlayout.graphviewergdi.1.1.12.nupkg.sha512"
   ],
   "logs": []
 }

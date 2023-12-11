@@ -30,6 +30,7 @@ namespace SprintTrackerBasic
         private bool isMeeting = false;
 
         TaskAbs taskToEdit;
+        TaskEdit parentTE;
 
         public TaskCreator(ToDoView tdv)
         {
@@ -47,11 +48,11 @@ namespace SprintTrackerBasic
             InitializeEventHandlers();
         }
 
-        public TaskCreator(TaskAbs taskToEdit)
+        public TaskCreator(TaskEdit parentTE)
         {
             InitializeComponent();
             InitializeDateDropdown();
-            this.taskToEdit = taskToEdit;
+            this.parentTE = parentTE;
             InitializeEventHandlers();
         }
 
@@ -195,16 +196,25 @@ namespace SprintTrackerBasic
         private void button3_Click(object sender, EventArgs e)
         {
             TaskAbs task = vo.ParseData(taskName, dueDate, desc, assigned, subTask, currState);
-            if (parent == null)
-            {
-                vo.AddTasks(task);
 
-                //todoview.AddingTask(task);
-                todoview.AddTaskToTreeView(task);
+            if (parentTE == null)
+            {
+                if (parent == null)
+                {
+                    vo.AddTasks(task);
+
+                    //todoview.AddingTask(task);
+                    todoview.AddTaskToTreeView(task);
+                }
+
+                else
+                {
+                    parent.subTask.Add(task);
+                }
             }
             else
             {
-                parent.subTask.Add(task);
+                parentTE.GetTaskList().Add(task);
             }
             this.Close();
         }

@@ -128,7 +128,7 @@ namespace SprintTrackerBasic
         // add subtask
         private void button1_1_Click(object sender, EventArgs e)
         {
-            TaskCreator te = new TaskCreator(taskToEdit);
+            TaskCreator te = new TaskCreator(this);
             this.Enabled = false;
             te.ShowDialog();
             this.Enabled = true;
@@ -137,11 +137,11 @@ namespace SprintTrackerBasic
         // add issue
         private void button2_1_Click(object sender, EventArgs e)
         {
-            TaskCreator te = new TaskCreator(taskToEdit);
+            /*TaskCreator te = new TaskCreator(taskToEdit);
             Issues i = new Issues(te);
             this.Enabled = false;
             i.ShowDialog();
-            this.Enabled = true;
+            this.Enabled = true;*/
         }
 
 
@@ -228,5 +228,21 @@ namespace SprintTrackerBasic
             }
         }
 
+        private void button3_1_Click(object sender, EventArgs e)
+        {
+            if (taskToEdit is TaskComposite)
+            {
+                TaskComposite tc = (TaskComposite)taskToEdit;
+                foreach (TaskAbs subtask in subTask)
+                {
+                    tc.GetSubtasks().Add(subtask);
+                }
+            }
+        }
+
+        public List<TaskAbs> GetTaskList()
+        {
+            return subTask;
+        }
     }
 }

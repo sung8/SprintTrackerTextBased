@@ -291,6 +291,7 @@
             button3_1.TabIndex = 46;
             button3_1.Text = "Save Changes";
             button3_1.UseVisualStyleBackColor = false;
+            button3_1.Click += button3_1_Click;
             button3_1.MouseClick += button3_1_Click;
             // 
             // button2_1

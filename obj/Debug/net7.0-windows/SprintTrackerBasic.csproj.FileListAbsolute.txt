@@ -32,7 +32,6 @@ C:\SWENG-421-LABS\Final-Project-Sprint-Tracker\SprintTrackerTextBased\obj\Debug\
 C:\SWENG-421-LABS\Final-Project-Sprint-Tracker\SprintTrackerTextBased\obj\Debug\net7.0-windows\ref\SprintTrackerBasic.dll
 D:\SWENG 421Projects\SprintTrackerTextBased\obj\Debug\net7.0-windows\SprintTrackerBasic.CalendarView.resources
 D:\SWENG 421Projects\SprintTrackerTextBased\obj\Debug\net7.0-windows\SprintTrackerBasic.TaskCreator.resources
-D:\SWENG 421Projects\SprintTrackerTextBased\obj\Debug\net7.0-windows\SprintTrackerBasic.TreeView.resources
 D:\SWENG 421Projects\SprintTrackerTextBased\obj\Debug\net7.0-windows\SprintTrackerBasic.AddUser.resources
 D:\SWENG 421Projects\SprintTrackerTextBased\obj\Debug\net7.0-windows\SprintTrackerBasic.AssignUser.resources
 D:\SWENG 421Projects\SprintTrackerTextBased\bin\Debug\net7.0-windows\AutomaticGraphLayout.dll
@@ -55,3 +54,5 @@ C:\SWENG-421-LABS\Final-Project-Sprint-Tracker\SprintTrackerTextBased\obj\Debug\
 C:\SWENG-421-LABS\Final-Project-Sprint-Tracker\SprintTrackerTextBased\obj\Debug\net7.0-windows\SprintTrackerBasic.Issues.resources
 C:\SWENG-421-LABS\Final-Project-Sprint-Tracker\SprintTrackerTextBased\obj\Debug\net7.0-windows\SprintTrackerBasic.TaskInfo.resources
 C:\SWENG-421-LABS\Final-Project-Sprint-Tracker\SprintTrackerTextBased\obj\Debug\net7.0-windows\SprintTrackerBasic.TaskEdit.resources
+D:\SWENG 421Projects\SprintTrackerTextBased\obj\Debug\net7.0-windows\SprintTrackerBasic.TaskEdit.resources
+D:\SWENG 421Projects\SprintTrackerTextBased\obj\Debug\net7.0-windows\SprintTrackerBasic.TaskInfo.resources
