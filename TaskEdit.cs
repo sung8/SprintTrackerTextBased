@@ -139,11 +139,11 @@ namespace SprintTrackerBasic
         // add issue
         private void button2_1_Click(object sender, EventArgs e)
         {
-            /*TaskCreator te = new TaskCreator(taskToEdit);
-            Issues i = new Issues(te);
+            //TaskCreator te = new TaskCreator(taskToEdit);
+            Issues i = new Issues(this);
             this.Enabled = false;
             i.ShowDialog();
-            this.Enabled = true;*/
+            this.Enabled = true;
         }
 
 
@@ -234,11 +234,16 @@ namespace SprintTrackerBasic
         {
             if (taskToEdit is TaskComposite)
             {
-                TaskComposite tc = (TaskComposite)taskToEdit;
+                TaskComposite taskComp = (TaskComposite)taskToEdit;
                 foreach (TaskAbs subtask in subTask)
                 {
-                    tc.GetSubtasks().Add(subtask);
+                    taskComp.GetSubtasks().Add(subtask);
                 }
+                foreach (Issue issue in issues)
+                {
+                    taskComp.AddIssue(issue);
+                }
+
             }
             else
             {
@@ -257,21 +262,38 @@ namespace SprintTrackerBasic
                      .AddChildren(subTask)
                      .SetCategory(currState)
                      .Build();
+
+                    task.issues = taskToEdit.issues;
+                    foreach (Issue issue in issues)
+                    {
+
+                        task.AddIssue(issue);
+                    }
                     taskInfo.SetCurrTask(task);
-                    //remove original non composite task from the view organizer
+
+
                     if (vo.GetParentEdited() != null)
                     {
-                        
+
                         vo.GetParentEdited().AddChild(task);
                         vo.GetParentEdited().RemoveChild(taskToEdit);
                     }
                     else
                     {
+                        //remove original non composite task from the view organizer
                         vo.GetAllCurrentTasks().Add(task);
                         vo.GetAllCurrentTasks().Remove(taskToEdit);
                     }
 
-                    vo.SetParentEdited();
+                    vo.SetParentEdited();  //nulls the parent field in vo to be ready for the next edit
+                }
+                else
+                {
+                    foreach (Issue issue in issues)
+                    {
+
+                        taskToEdit.AddIssue(issue);
+                    }
                 }
             }
         }

@@ -1,4 +1,5 @@
-﻿using SprintTrackerBasic.Users;
+﻿using SprintTrackerBasic.Observer;
+using SprintTrackerBasic.Users;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -16,8 +17,15 @@ namespace SprintTrackerBasic
     {
         private string title;
         private string desc;
-        private List<TeamMember> alerted = new List<TeamMember>();
+        private List<IssueObserverIF> alerted = new List<IssueObserverIF>();
         private TaskCreator tc;
+        private TaskEdit te;
+
+        public Issues(TaskEdit te)
+        {
+            InitializeComponent();
+            this.te = te;
+        }
         public Issues(TaskCreator tc)
         {
             InitializeComponent();
@@ -55,7 +63,17 @@ namespace SprintTrackerBasic
         {
             Tasks.Issue.Status status = Tasks.Issue.Status.New;
             Tasks.Issue issue = new Tasks.Issue(title, desc, status);
-            tc.AddIssue(issue);
+            issue.SubscribeMultiple(alerted);      //subscribe those members to the issue
+            if (tc != null)
+            {
+                tc.AddIssue(issue);
+            }
+
+            else
+            {
+                te.AddIssue(issue);
+            }
+       
             this.Close();
         }
     }

@@ -172,7 +172,7 @@ namespace SprintTrackerBasic.Tasks
                 results += Subscribe(observer);
             }
 
-            notifLog.AddLog(results);
+            //notifLog.AddLog(results);
             return results;
         }
 
