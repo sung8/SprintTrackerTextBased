@@ -26,6 +26,11 @@ namespace SprintTrackerBasic.Users
             this.name = memberName;
             this.assignedTeam = team;
         }
+
+        public int GetId()
+        {
+            return id;
+        }
         public string GetName()
         {
             return this.name;

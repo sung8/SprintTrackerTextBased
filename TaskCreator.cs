@@ -143,6 +143,10 @@ namespace SprintTrackerBasic
                         // Display an error message if parsing fails
                         MessageBox.Show("Invalid time format. Please enter the time in a valid format.", "Error");
                     }
+                    AddUserToMeeting userAddForm = new AddUserToMeeting();
+                    this.Enabled = false;
+                    userAddForm.ShowDialog();
+                    this.Enabled = true;
                 }
                 else if (selectedRadioButton == radioButton7)
                 {

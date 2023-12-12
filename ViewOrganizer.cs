@@ -21,6 +21,7 @@ namespace SprintTrackerBasic
         private List<TaskAbs> tasksDoing = new List<TaskAbs>();
         private List<TaskAbs> tasksDone = new List<TaskAbs>();
         private TaskComposite parentOfEdited;
+        private List<Users.TeamMember> attendees = new List<Users.TeamMember>();
 
         private ViewOrganizer() { }
 
@@ -28,7 +29,7 @@ namespace SprintTrackerBasic
         public static ViewOrganizer GetInstance()
         {
             return instance;
-        } 
+        }
 
         public List<Users.Team> GetTeams()
         {
@@ -39,9 +40,9 @@ namespace SprintTrackerBasic
             if (task.GetCategory() == TaskAbs.Category.Todo)
             {
                 tasksTodo.Add(task);
-            } 
-            
-            else if (task.GetCategory() == TaskAbs.Category.Doing) 
+            }
+
+            else if (task.GetCategory() == TaskAbs.Category.Doing)
             {
                 tasksDoing.Add(task);
             }
@@ -49,6 +50,12 @@ namespace SprintTrackerBasic
             {
                 tasksDone.Add(task);
             }
+        }
+
+        public void AddAttendees(List<TeamMember> tm)
+        {
+            attendees.AddRange(tm);
+            // clear this after meeting task successfully made
         }
 
         public List<TaskAbs> GetAllCurrentTasks()
@@ -64,6 +71,35 @@ namespace SprintTrackerBasic
         {
             //return allTasks.FirstOrDefault(task => task.GetId() == id);
             return FindTaskByIdRecursive(allTasks, id);
+        }
+
+        public TeamMember FindTeamMember(int memberId, string memberName, string teamName)
+        {
+            foreach (Team team in teams)
+            {
+                foreach (TeamMember teamMember in team.GetTeamMembers())
+                {
+                    if (teamMember.GetId() == memberId &&
+                        teamMember.GetName() == memberName &&
+                        team.GetName() == teamName)
+                    {
+                        return teamMember; // Found a matching TeamMember
+                    }
+                }
+            }
+
+            return null; // No matching TeamMember found
+            /*TeamMember foundTeamMember = assigned.Find(tm =>
+                tm.GetId() == memberId &&
+                tm.GetName() == memberName &&
+                tm.GetAssignedTeam().GetName() == teamName);
+
+            return foundTeamMember;*/
+
+            /*return assigned.FirstOrDefault(tm =>
+                tm.GetId() == memberId &&
+                tm.GetName() == memberName &&
+                tm.GetAssignedTeam().GetName() == teamName);*/
         }
 
         //allowing for subtask info view
@@ -119,7 +155,7 @@ namespace SprintTrackerBasic
         public TaskAbs ParseData(string tn, DateTime dd, string d, List<TeamMember> a, List<TaskAbs> ta, TaskAbs.Category currState)
         {
 
-            if(ta.Count == 0)
+            if (ta.Count == 0)
             {
                 TaskBuilderIF tb = TaskBuilderAbs.GetTaskBuilder("task");
                 var task = tb
@@ -129,7 +165,7 @@ namespace SprintTrackerBasic
                  .AddAssignedTeamMember(a)
                  .SetCategory(currState)
                  .Build();
-              
+
                 return task;
             }
             else

@@ -5,6 +5,9 @@
     <Compile Update="AddUser.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Update="AddUserToMeeting.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Update="AssignUser.cs">
       <SubType>Form</SubType>
     </Compile>
