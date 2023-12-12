@@ -14,22 +14,6 @@ D:\SWENG 421Projects\SprintTrackerTextBased\obj\Debug\net7.0-windows\SprintTrack
 D:\SWENG 421Projects\SprintTrackerTextBased\obj\Debug\net7.0-windows\ref\SprintTrackerBasic.dll
 D:\SWENG 421Projects\SprintTrackerTextBased\obj\Debug\net7.0-windows\SprintTrackerBasic.csproj.GenerateResource.cache
 D:\SWENG 421Projects\SprintTrackerTextBased\obj\Debug\net7.0-windows\SprintTrackerBasic.ToDoView.resources
-C:\SWENG-421-LABS\Final-Project-Sprint-Tracker\SprintTrackerTextBased\bin\Debug\net7.0-windows\SprintTrackerBasic.exe
-C:\SWENG-421-LABS\Final-Project-Sprint-Tracker\SprintTrackerTextBased\bin\Debug\net7.0-windows\SprintTrackerBasic.deps.json
-C:\SWENG-421-LABS\Final-Project-Sprint-Tracker\SprintTrackerTextBased\bin\Debug\net7.0-windows\SprintTrackerBasic.runtimeconfig.json
-C:\SWENG-421-LABS\Final-Project-Sprint-Tracker\SprintTrackerTextBased\bin\Debug\net7.0-windows\SprintTrackerBasic.dll
-C:\SWENG-421-LABS\Final-Project-Sprint-Tracker\SprintTrackerTextBased\bin\Debug\net7.0-windows\SprintTrackerBasic.pdb
-C:\SWENG-421-LABS\Final-Project-Sprint-Tracker\SprintTrackerTextBased\obj\Debug\net7.0-windows\SprintTrackerBasic.ToDoView.resources
-C:\SWENG-421-LABS\Final-Project-Sprint-Tracker\SprintTrackerTextBased\obj\Debug\net7.0-windows\SprintTrackerBasic.csproj.GenerateResource.cache
-C:\SWENG-421-LABS\Final-Project-Sprint-Tracker\SprintTrackerTextBased\obj\Debug\net7.0-windows\SprintTrackerBasic.GeneratedMSBuildEditorConfig.editorconfig
-C:\SWENG-421-LABS\Final-Project-Sprint-Tracker\SprintTrackerTextBased\obj\Debug\net7.0-windows\SprintTrackerBasic.AssemblyInfoInputs.cache
-C:\SWENG-421-LABS\Final-Project-Sprint-Tracker\SprintTrackerTextBased\obj\Debug\net7.0-windows\SprintTrackerBasic.AssemblyInfo.cs
-C:\SWENG-421-LABS\Final-Project-Sprint-Tracker\SprintTrackerTextBased\obj\Debug\net7.0-windows\SprintTrackerBasic.csproj.CoreCompileInputs.cache
-C:\SWENG-421-LABS\Final-Project-Sprint-Tracker\SprintTrackerTextBased\obj\Debug\net7.0-windows\SprintTrackerBasic.dll
-C:\SWENG-421-LABS\Final-Project-Sprint-Tracker\SprintTrackerTextBased\obj\Debug\net7.0-windows\refint\SprintTrackerBasic.dll
-C:\SWENG-421-LABS\Final-Project-Sprint-Tracker\SprintTrackerTextBased\obj\Debug\net7.0-windows\SprintTrackerBasic.pdb
-C:\SWENG-421-LABS\Final-Project-Sprint-Tracker\SprintTrackerTextBased\obj\Debug\net7.0-windows\SprintTrackerBasic.genruntimeconfig.cache
-C:\SWENG-421-LABS\Final-Project-Sprint-Tracker\SprintTrackerTextBased\obj\Debug\net7.0-windows\ref\SprintTrackerBasic.dll
 D:\SWENG 421Projects\SprintTrackerTextBased\obj\Debug\net7.0-windows\SprintTrackerBasic.CalendarView.resources
 D:\SWENG 421Projects\SprintTrackerTextBased\obj\Debug\net7.0-windows\SprintTrackerBasic.TaskCreator.resources
 D:\SWENG 421Projects\SprintTrackerTextBased\obj\Debug\net7.0-windows\SprintTrackerBasic.AddUser.resources
@@ -39,6 +23,15 @@ D:\SWENG 421Projects\SprintTrackerTextBased\bin\Debug\net7.0-windows\AutomaticGr
 D:\SWENG 421Projects\SprintTrackerTextBased\bin\Debug\net7.0-windows\Microsoft.Msagl.GraphViewerGdi.dll
 D:\SWENG 421Projects\SprintTrackerTextBased\obj\Debug\net7.0-windows\SprintTrackerBasic.csproj.AssemblyReference.cache
 D:\SWENG 421Projects\SprintTrackerTextBased\obj\Debug\net7.0-windows\SprintTrackerBasic.csproj.CopyComplete
+D:\SWENG 421Projects\SprintTrackerTextBased\obj\Debug\net7.0-windows\SprintTrackerBasic.IssueNotificationLog.resources
+D:\SWENG 421Projects\SprintTrackerTextBased\obj\Debug\net7.0-windows\SprintTrackerBasic.Issues.resources
+D:\SWENG 421Projects\SprintTrackerTextBased\obj\Debug\net7.0-windows\SprintTrackerBasic.TaskEdit.resources
+D:\SWENG 421Projects\SprintTrackerTextBased\obj\Debug\net7.0-windows\SprintTrackerBasic.TaskInfo.resources
+C:\SWENG-421-LABS\Final-Project-Sprint-Tracker\SprintTrackerTextBased\bin\Debug\net7.0-windows\SprintTrackerBasic.exe
+C:\SWENG-421-LABS\Final-Project-Sprint-Tracker\SprintTrackerTextBased\bin\Debug\net7.0-windows\SprintTrackerBasic.deps.json
+C:\SWENG-421-LABS\Final-Project-Sprint-Tracker\SprintTrackerTextBased\bin\Debug\net7.0-windows\SprintTrackerBasic.runtimeconfig.json
+C:\SWENG-421-LABS\Final-Project-Sprint-Tracker\SprintTrackerTextBased\bin\Debug\net7.0-windows\SprintTrackerBasic.dll
+C:\SWENG-421-LABS\Final-Project-Sprint-Tracker\SprintTrackerTextBased\bin\Debug\net7.0-windows\SprintTrackerBasic.pdb
 C:\SWENG-421-LABS\Final-Project-Sprint-Tracker\SprintTrackerTextBased\bin\Debug\net7.0-windows\AutomaticGraphLayout.dll
 C:\SWENG-421-LABS\Final-Project-Sprint-Tracker\SprintTrackerTextBased\bin\Debug\net7.0-windows\AutomaticGraphLayout.Drawing.dll
 C:\SWENG-421-LABS\Final-Project-Sprint-Tracker\SprintTrackerTextBased\bin\Debug\net7.0-windows\Microsoft.Msagl.GraphViewerGdi.dll
@@ -46,13 +39,20 @@ C:\SWENG-421-LABS\Final-Project-Sprint-Tracker\SprintTrackerTextBased\obj\Debug\
 C:\SWENG-421-LABS\Final-Project-Sprint-Tracker\SprintTrackerTextBased\obj\Debug\net7.0-windows\SprintTrackerBasic.AddUser.resources
 C:\SWENG-421-LABS\Final-Project-Sprint-Tracker\SprintTrackerTextBased\obj\Debug\net7.0-windows\SprintTrackerBasic.AssignUser.resources
 C:\SWENG-421-LABS\Final-Project-Sprint-Tracker\SprintTrackerTextBased\obj\Debug\net7.0-windows\SprintTrackerBasic.CalendarView.resources
-C:\SWENG-421-LABS\Final-Project-Sprint-Tracker\SprintTrackerTextBased\obj\Debug\net7.0-windows\SprintTrackerBasic.TaskCreator.resources
-C:\SWENG-421-LABS\Final-Project-Sprint-Tracker\SprintTrackerTextBased\obj\Debug\net7.0-windows\SprintTrackerBasic.csproj.CopyComplete
-D:\SWENG 421Projects\SprintTrackerTextBased\obj\Debug\net7.0-windows\SprintTrackerBasic.IssueNotificationLog.resources
-D:\SWENG 421Projects\SprintTrackerTextBased\obj\Debug\net7.0-windows\SprintTrackerBasic.Issues.resources
 C:\SWENG-421-LABS\Final-Project-Sprint-Tracker\SprintTrackerTextBased\obj\Debug\net7.0-windows\SprintTrackerBasic.IssueNotificationLog.resources
 C:\SWENG-421-LABS\Final-Project-Sprint-Tracker\SprintTrackerTextBased\obj\Debug\net7.0-windows\SprintTrackerBasic.Issues.resources
-C:\SWENG-421-LABS\Final-Project-Sprint-Tracker\SprintTrackerTextBased\obj\Debug\net7.0-windows\SprintTrackerBasic.TaskInfo.resources
+C:\SWENG-421-LABS\Final-Project-Sprint-Tracker\SprintTrackerTextBased\obj\Debug\net7.0-windows\SprintTrackerBasic.TaskCreator.resources
 C:\SWENG-421-LABS\Final-Project-Sprint-Tracker\SprintTrackerTextBased\obj\Debug\net7.0-windows\SprintTrackerBasic.TaskEdit.resources
-D:\SWENG 421Projects\SprintTrackerTextBased\obj\Debug\net7.0-windows\SprintTrackerBasic.TaskEdit.resources
-D:\SWENG 421Projects\SprintTrackerTextBased\obj\Debug\net7.0-windows\SprintTrackerBasic.TaskInfo.resources
+C:\SWENG-421-LABS\Final-Project-Sprint-Tracker\SprintTrackerTextBased\obj\Debug\net7.0-windows\SprintTrackerBasic.TaskInfo.resources
+C:\SWENG-421-LABS\Final-Project-Sprint-Tracker\SprintTrackerTextBased\obj\Debug\net7.0-windows\SprintTrackerBasic.ToDoView.resources
+C:\SWENG-421-LABS\Final-Project-Sprint-Tracker\SprintTrackerTextBased\obj\Debug\net7.0-windows\SprintTrackerBasic.csproj.GenerateResource.cache
+C:\SWENG-421-LABS\Final-Project-Sprint-Tracker\SprintTrackerTextBased\obj\Debug\net7.0-windows\SprintTrackerBasic.GeneratedMSBuildEditorConfig.editorconfig
+C:\SWENG-421-LABS\Final-Project-Sprint-Tracker\SprintTrackerTextBased\obj\Debug\net7.0-windows\SprintTrackerBasic.AssemblyInfoInputs.cache
+C:\SWENG-421-LABS\Final-Project-Sprint-Tracker\SprintTrackerTextBased\obj\Debug\net7.0-windows\SprintTrackerBasic.AssemblyInfo.cs
+C:\SWENG-421-LABS\Final-Project-Sprint-Tracker\SprintTrackerTextBased\obj\Debug\net7.0-windows\SprintTrackerBasic.csproj.CoreCompileInputs.cache
+C:\SWENG-421-LABS\Final-Project-Sprint-Tracker\SprintTrackerTextBased\obj\Debug\net7.0-windows\SprintTrackerBasic.csproj.CopyComplete
+C:\SWENG-421-LABS\Final-Project-Sprint-Tracker\SprintTrackerTextBased\obj\Debug\net7.0-windows\SprintTrackerBasic.dll
+C:\SWENG-421-LABS\Final-Project-Sprint-Tracker\SprintTrackerTextBased\obj\Debug\net7.0-windows\refint\SprintTrackerBasic.dll
+C:\SWENG-421-LABS\Final-Project-Sprint-Tracker\SprintTrackerTextBased\obj\Debug\net7.0-windows\SprintTrackerBasic.pdb
+C:\SWENG-421-LABS\Final-Project-Sprint-Tracker\SprintTrackerTextBased\obj\Debug\net7.0-windows\SprintTrackerBasic.genruntimeconfig.cache
+C:\SWENG-421-LABS\Final-Project-Sprint-Tracker\SprintTrackerTextBased\obj\Debug\net7.0-windows\ref\SprintTrackerBasic.dll

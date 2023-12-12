@@ -1,14 +1,6 @@
-﻿using Microsoft.Msagl.Drawing;
-using SprintTrackerBasic.Tasks;
+﻿using SprintTrackerBasic.Tasks;
 using SprintTrackerBasic.Users;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.Globalization;
 using System.Windows.Forms;
 
 namespace SprintTrackerBasic
@@ -31,6 +23,7 @@ namespace SprintTrackerBasic
 
         TaskAbs taskToEdit;
         TaskEdit parentTE;
+        TimeOnly meetingTime;
 
         public TaskCreator(ToDoView tdv)
         {
@@ -130,6 +123,26 @@ namespace SprintTrackerBasic
                 {
                     radioButton7.Checked = false;
                     isMeeting = true;
+                    // Open a MessageBox prompting the user for input
+                    string userInput = Microsoft.VisualBasic.Interaction.InputBox("Please enter a meeting time in Hour:Minutes AM/PM format", "Set Meeting Time", "");
+                    // Display the user's input
+                    //MessageBox.Show($"You entered: {userInput}", "Result");
+                    // Parse the user input as TimeOnly
+
+                    // Parse the user input as DateTime
+                    if (DateTime.TryParseExact(userInput, "h:mm tt", CultureInfo.InvariantCulture, DateTimeStyles.None, out var meetingDateTime))
+                    {
+                        // Convert DateTime to TimeOnly
+                        meetingTime = TimeOnly.FromDateTime(meetingDateTime);
+
+                        // Display the parsed meeting time
+                        MessageBox.Show($"You entered: {meetingTime}", "Result");
+                    }
+                    else
+                    {
+                        // Display an error message if parsing fails
+                        MessageBox.Show("Invalid time format. Please enter the time in a valid format.", "Error");
+                    }
                 }
                 else if (selectedRadioButton == radioButton7)
                 {
@@ -192,6 +205,15 @@ namespace SprintTrackerBasic
         }
 
 
+        /* radioButton1 todo
+         * radioButton2 doing
+         * radioButton3 done
+         * radioButton4 yes urgent
+         * radioButton5 no urgent
+         * radioButton6 yes meeting
+         * radioButton7 no
+        */
+
         //create task button
         private void button3_Click(object sender, EventArgs e)
         {
@@ -200,7 +222,7 @@ namespace SprintTrackerBasic
             {
                 task.AddIssue(issue);
             }
-        
+
             if (parentTE == null)
             {
                 if (parent == null)

@@ -10,6 +10,8 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using Microsoft.Msagl.Drawing;
 using Microsoft.Msagl.GraphViewerGdi;
+using SprintTrackerBasic.Decorated;
+using SprintTrackerBasic.Users;
 
 namespace SprintTrackerBasic
 {
@@ -31,7 +33,7 @@ namespace SprintTrackerBasic
             info.Add("Task Name: " + currTask.GetName());
             info.Add("Task Owner: " + currTask.GetAssignedMember().GetName() + " (Team Name: " + currTask.GetAssignedMember().GetAssignedTeam().GetName() + ")");
             info.Add("Category: " + currTask.GetCategory().ToString());
-            info.Add("Complete By: " + currTask.GetDueDate().ToString());
+            info.Add("Complete By: " + currTask.GetDueDate().ToShortDateString());
 
 
             if (currTask is TaskComposite)
@@ -39,6 +41,17 @@ namespace SprintTrackerBasic
                 TaskComposite temp = (TaskComposite)currTask;
                 info.Add("Subtasks: ");
                 info.Add(temp.Iterate());
+            }
+
+            if (currTask is MeetingTaskDecorator)
+            {
+                info.Add("Meeting Time: " + ((MeetingTaskDecorator)currTask).GetMeetingTime().ToString());
+                info.Add("Attendees: ");
+                List<TeamMember> tempList = ((MeetingTaskDecorator)currTask).GetAttendees();
+                foreach (TeamMember attendee in tempList)
+                {
+                    info.Add(attendee.GetName() + " (Team Name: " + attendee.GetAssignedTeam().GetName() + ")");
+                }
             }
             // Convert the list of strings to a single string with line breaks
             string text = string.Join(Environment.NewLine, info);

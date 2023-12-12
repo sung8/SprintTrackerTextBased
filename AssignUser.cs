@@ -35,8 +35,6 @@ namespace SprintTrackerBasic
         }
         private void InitializeComboBox()
         {
-
-
             foreach (Team t in vo.GetTeams())
             {
                 comboBox2.Items.Add(t.GetName());

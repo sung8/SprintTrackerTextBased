@@ -1,4 +1,5 @@
 ﻿using SprintTrackerBasic.Builder;
+using SprintTrackerBasic.Decorated;
 using SprintTrackerBasic.Tasks;
 using SprintTrackerBasic.Users;
 using System;
@@ -113,6 +114,8 @@ namespace SprintTrackerBasic
         private List<Users.TeamMember> assigned = new List<Users.TeamMember>();
         private List<TaskAbs> subTask = new List<TaskAbs>();
         */
+
+        //public TaskAbs ParseData(string tn, DateTime dd, string d, List<TeamMember> a, List<TaskAbs> ta, TaskAbs.Category currState, bool isUrgent, bool isMeeting)
         public TaskAbs ParseData(string tn, DateTime dd, string d, List<TeamMember> a, List<TaskAbs> ta, TaskAbs.Category currState)
         {
 
@@ -144,5 +147,9 @@ namespace SprintTrackerBasic
             }
         }
 
+        /*public TaskAbs handleWrapping(TaskAbs t, string wrapType)
+        {
+            TaskAbs dect = new TaskDecorator();
+        }*/
     }
 }
