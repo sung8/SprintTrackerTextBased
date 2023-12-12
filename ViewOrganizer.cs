@@ -19,6 +19,7 @@ namespace SprintTrackerBasic
         private List<TaskAbs> tasksTodo = new List<TaskAbs>();
         private List<TaskAbs> tasksDoing = new List<TaskAbs>();
         private List<TaskAbs> tasksDone = new List<TaskAbs>();
+        private TaskComposite parentOfEdited;
 
         private ViewOrganizer() { }
 
@@ -60,8 +61,43 @@ namespace SprintTrackerBasic
 
         public TaskAbs FindTaskById(int id)
         {
-            return allTasks.FirstOrDefault(task => task.GetId() == id);
+            //return allTasks.FirstOrDefault(task => task.GetId() == id);
+            return FindTaskByIdRecursive(allTasks, id);
         }
+
+        //allowing for subtask info view
+        private TaskAbs FindTaskByIdRecursive(IEnumerable<TaskAbs> tasks, int id, TaskComposite parent = null)
+        {
+            foreach (var task in tasks)
+            {
+                if (task.GetId() == id)
+                {
+                    parentOfEdited = parent;
+                    return task;
+                }
+
+                if (task is TaskComposite taskComposite)
+                {
+                    var foundInSubtasks = FindTaskByIdRecursive(taskComposite.GetSubtasks(), id, taskComposite);
+                    if (foundInSubtasks != null)
+                    {
+                        return foundInSubtasks;
+                    }
+                }
+            }
+
+            return null;
+        }
+
+        public TaskComposite GetParentEdited()
+        {
+            return parentOfEdited;
+        }
+        public void SetParentEdited()
+        {
+            parentOfEdited = null;
+        }
+
         /*public void SortTodoViewTasks()
         {
             // Categorize tasks using LINQ

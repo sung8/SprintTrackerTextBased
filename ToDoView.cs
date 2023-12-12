@@ -221,14 +221,22 @@ namespace SprintTrackerBasic
 
         private void ToDoView_VisibleChanged(object sender, EventArgs e)
         {
-            /*ViewOrganizer vo = ViewOrganizer.GetInstance();
+            ClearTrees();
+            ViewOrganizer vo = ViewOrganizer.GetInstance();
 
             List<TaskAbs> tasks = vo.GetAllCurrentTasks();
 
             foreach (TaskAbs t in tasks)
             {
                 this.AddTaskToTreeView(t);
-            }*/
+            }
+        }
+
+        private void ClearTrees()
+        {
+            treeView1.Nodes.Clear();
+            treeView2.Nodes.Clear();
+            treeView3.Nodes.Clear();
         }
     }
 }

@@ -25,7 +25,7 @@ namespace SprintTrackerBasic
 
         public void UpdateTaskInfo()
         {
-            // Assuming GetLogHistory returns a List<string>
+            // Assuming GetLogHistory returns a List<string>        curr task is null for a child 
             List<string> info = new List<string>();
             info.Add("Task ID: " + currTask.GetId().ToString());
             info.Add("Task Name: " + currTask.GetName());
@@ -50,6 +50,10 @@ namespace SprintTrackerBasic
         public void Refresh()
         {
             UpdateTaskInfo();
+        }
+        public void SetCurrTask(TaskAbs task)
+        {
+            currTask = task;
         }
 
         public void GraphTask(TaskComposite rootTask)

@@ -1,4 +1,6 @@
-﻿using SprintTrackerBasic.Tasks;
+﻿using SprintTrackerBasic.Builder;
+using SprintTrackerBasic.Tasks;
+using SprintTrackerBasic.Users;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -236,6 +238,40 @@ namespace SprintTrackerBasic
                 foreach (TaskAbs subtask in subTask)
                 {
                     tc.GetSubtasks().Add(subtask);
+                }
+            }
+            else
+            {
+                if (subTask.Count != 0)
+                {
+                    //create a task composite based off of the original task 
+                    TaskBuilderIF tb = TaskBuilderAbs.GetTaskBuilder("composite");
+                    List<TeamMember> memb = new List<TeamMember>();
+                    memb.Add(taskToEdit.GetAssignedMember());
+                    //switches id 
+                    var task = tb
+                     .SetTaskName(taskToEdit.GetName())
+                     .SetDueDate(taskToEdit.GetDueDate())
+                     .SetDescription(taskToEdit.GetDesc())
+                     .AddAssignedTeamMember(memb)
+                     .AddChildren(subTask)
+                     .SetCategory(currState)
+                     .Build();
+                    taskInfo.SetCurrTask(task);
+                    //remove original non composite task from the view organizer
+                    if (vo.GetParentEdited() != null)
+                    {
+                        
+                        vo.GetParentEdited().AddChild(task);
+                        vo.GetParentEdited().RemoveChild(taskToEdit);
+                    }
+                    else
+                    {
+                        vo.GetAllCurrentTasks().Add(task);
+                        vo.GetAllCurrentTasks().Remove(taskToEdit);
+                    }
+
+                    vo.SetParentEdited();
                 }
             }
         }
