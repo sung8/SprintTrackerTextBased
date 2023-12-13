@@ -144,15 +144,20 @@ namespace SprintTrackerBasic
 
         public void AddTaskToGraph(TaskComposite task, Graph graph)
         {
+            // Add node for this task with both ID and name
+            string nodeId = $" {task.GetId()}\n {task.GetName()} ";
+            graph.AddNode(nodeId);
 
-            // Add node for this task
-            graph.AddNode(task.GetId().ToString());
-            List<TaskAbs> temp = task.GetSubtasks();
+            List<TaskComponent> temp = task.GetSubtasks();
 
             // Recursively add child tasks
-            foreach (TaskAbs childTask in temp)
+            foreach (TaskComponent childTask in temp)
             {
-                graph.AddEdge(task.GetId().ToString(), childTask.GetId().ToString());
+                // Add edge between parent and child
+                string childNodeId = $" {childTask.GetId()}\n {childTask.GetName()} ";
+                graph.AddEdge(nodeId, childNodeId);
+
+                // Recursively add child tasks
                 if (childTask is TaskComposite)
                 {
                     AddTaskToGraph((TaskComposite)childTask, graph);
