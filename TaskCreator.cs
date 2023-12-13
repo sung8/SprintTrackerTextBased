@@ -200,7 +200,7 @@ namespace SprintTrackerBasic
             {
                 task.AddIssue(issue);
             }
-        
+
             if (parentTE == null)
             {
                 if (parent == null)

@@ -56,3 +56,4 @@ C:\SWENG-421-LABS\Final-Project-Sprint-Tracker\SprintTrackerTextBased\obj\Debug\
 C:\SWENG-421-LABS\Final-Project-Sprint-Tracker\SprintTrackerTextBased\obj\Debug\net7.0-windows\SprintTrackerBasic.TaskEdit.resources
 D:\SWENG 421Projects\SprintTrackerTextBased\obj\Debug\net7.0-windows\SprintTrackerBasic.TaskEdit.resources
 D:\SWENG 421Projects\SprintTrackerTextBased\obj\Debug\net7.0-windows\SprintTrackerBasic.TaskInfo.resources
+D:\SWENG 421Projects\SprintTrackerTextBased\obj\Debug\net7.0-windows\SprintTrackerBasic.SprintCreator.resources

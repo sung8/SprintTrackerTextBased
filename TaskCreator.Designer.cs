@@ -40,7 +40,6 @@
             button2 = new Button();
             button3 = new Button();
             comboBox2 = new ComboBox();
-            listBox1 = new ListBox();
             button4 = new Button();
             label7 = new Label();
             groupBox1 = new GroupBox();
@@ -57,6 +56,7 @@
             label9 = new Label();
             label10 = new Label();
             groupBox4 = new GroupBox();
+            listBox1 = new ListBox();
             groupBox1.SuspendLayout();
             groupBox2.SuspendLayout();
             groupBox3.SuspendLayout();
@@ -187,15 +187,6 @@
             comboBox2.Size = new Size(254, 23);
             comboBox2.TabIndex = 18;
             comboBox2.SelectedIndexChanged += comboBox2_SelectedIndexChanged;
-            // 
-            // listBox1
-            // 
-            listBox1.FormattingEnabled = true;
-            listBox1.ItemHeight = 15;
-            listBox1.Location = new Point(162, 523);
-            listBox1.Name = "listBox1";
-            listBox1.Size = new Size(295, 34);
-            listBox1.TabIndex = 19;
             // 
             // button4
             // 
@@ -374,6 +365,15 @@
             groupBox4.TabStop = false;
             groupBox4.Text = "groupBox4";
             // 
+            // listBox1
+            // 
+            listBox1.FormattingEnabled = true;
+            listBox1.ItemHeight = 15;
+            listBox1.Location = new Point(162, 523);
+            listBox1.Name = "listBox1";
+            listBox1.Size = new Size(295, 34);
+            listBox1.TabIndex = 19;
+            // 
             // TaskCreator
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -428,7 +428,6 @@
         private Button button2;
         private Button button3;
         private ComboBox comboBox2;
-        private ListBox listBox1;
         private Button button4;
         private Label label7;
         private GroupBox groupBox1;
@@ -445,5 +444,6 @@
         private Label label9;
         private Label label10;
         private GroupBox groupBox4;
+        private ListBox listBox1;
     }
 }

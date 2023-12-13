@@ -17,6 +17,9 @@
     <Compile Update="Issues.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Update="SprintCreator.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Update="TaskCreator.cs">
       <SubType>Form</SubType>
     </Compile>

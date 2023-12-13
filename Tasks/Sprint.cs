@@ -8,10 +8,10 @@ namespace SprintTrackerBasic.Tasks
 {
     public class Sprint: SprintIF
     {
-        private DateOnly startDate;
+        private DateTime startDate;
         public Dictionary<int, Day> Days { get; } = new Dictionary<int, Day>();
 
-        public Sprint(DateOnly startDate)
+        public Sprint(DateTime startDate)
         {
             this.startDate = startDate;
             this.CalculateDays();
@@ -22,7 +22,7 @@ namespace SprintTrackerBasic.Tasks
             // Fixed sprint duration of 14 days
             for (int i = 1; i <= 14; i++)
             {
-                DateOnly dueDate = startDate.AddDays(i - 1); // Subtract 1 to start from day 1
+                DateTime dueDate = startDate.AddDays(i - 1); // Subtract 1 to start from day 1
                 Day day = new Day(dueDate);
                 Days.Add(i, day); // Use the actual day id from the loop index
             }

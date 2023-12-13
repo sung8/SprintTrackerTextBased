@@ -20,14 +20,24 @@ namespace SprintTrackerBasic
         private List<TaskAbs> tasksDoing = new List<TaskAbs>();
         private List<TaskAbs> tasksDone = new List<TaskAbs>();
         private TaskComposite parentOfEdited;
-
+        private List<Sprint> sprints = new List<Sprint>();
         private ViewOrganizer() { }
 
 
         public static ViewOrganizer GetInstance()
         {
             return instance;
-        } 
+        }
+
+        public void AddSprint(Sprint sprint)
+        {
+            sprints.Add(sprint);
+        }
+        public List<Sprint> GetSprints()
+        {
+            return sprints;
+        }
+
 
         public List<Users.Team> GetTeams()
         {

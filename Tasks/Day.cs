@@ -14,10 +14,10 @@ namespace SprintTrackerBasic.Tasks
         // 2. something 1 - 14
         // ... as key for hashmap in sprint
 
-        private DateOnly dueDate;
+        private DateTime dueDate;
         public List<TaskComposite> rootTasks { get; } = new List<TaskComposite>();
 
-        public Day(DateOnly dueDate)
+        public Day(DateTime dueDate)
         {
             this.dueDate = dueDate;
             //this.id = dueDate.ToString("yyyyMMdd");
@@ -34,7 +34,7 @@ namespace SprintTrackerBasic.Tasks
         {
             return this.rootTasks;
         }
-        public DateOnly GetDate()
+        public DateTime GetDate()
         {
             return this.dueDate;
         }
