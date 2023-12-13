@@ -18,11 +18,11 @@ namespace SprintTrackerBasic
 {
     public partial class ToDoView : Form
     {
-
+        Color urgentTaskColor = Color.Orange;
         public ToDoView()
         {
             InitializeComponent();
-            ColorNodesInAllTreeViews();
+            //ColorNodesInAllTreeViews();
         }
 
 
@@ -73,7 +73,13 @@ namespace SprintTrackerBasic
 
         public void AddTaskToTreeView(TaskAbs task, TreeNode parentNode = null)
         {
-            TreeNode currentNode = new TreeNode(task.GetId() + ":" + task.GetName());
+            TreeNode currentNode = new TreeNode(task.GetId() + ": " + task.GetName());
+
+            // Check if the task is urgent
+            if (task.IsUrgent())
+            {
+                currentNode.BackColor = urgentTaskColor; // Set urgent task color
+            }
 
             if (parentNode != null)
             {
@@ -108,7 +114,7 @@ namespace SprintTrackerBasic
         }
 
         /// CHANGE COLOR OF TREE NODES (not implemented yet)
-        private void ColorNodesInTreeView(TreeView treeView)
+        /*private void ColorNodesInTreeView(TreeView treeView)
         {
             foreach (TreeNode rootNode in treeView.Nodes)
             {
@@ -124,7 +130,7 @@ namespace SprintTrackerBasic
 
                 if (childNode.Tag is TaskAbs task && task.IsUrgent())
                 {
-                    childNode.BackColor = Color.Red; // Set the desired color
+                    childNode.BackColor = urgentTaskColor; 
                 }
                 else
                 {
@@ -140,7 +146,7 @@ namespace SprintTrackerBasic
             ColorNodesInTreeView(treeView2);
             ColorNodesInTreeView(treeView3);
 
-        }
+        }*/
         /// END OF CHANGE COLOR OF TREE NODES (not implemented yet)
 
         // calendar view

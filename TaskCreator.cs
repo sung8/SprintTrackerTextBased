@@ -23,7 +23,6 @@ namespace SprintTrackerBasic
 
         TaskAbs taskToEdit;
         TaskEdit parentTE;
-        TimeOnly meetingTime;
 
         public TaskCreator(ToDoView tdv)
         {
@@ -133,10 +132,11 @@ namespace SprintTrackerBasic
                     if (DateTime.TryParseExact(userInput, "h:mm tt", CultureInfo.InvariantCulture, DateTimeStyles.None, out var meetingDateTime))
                     {
                         // Convert DateTime to TimeOnly
-                        meetingTime = TimeOnly.FromDateTime(meetingDateTime);
+                        TimeOnly meetingTime = TimeOnly.FromDateTime(meetingDateTime);
 
                         // Display the parsed meeting time
                         MessageBox.Show($"You entered: {meetingTime}", "Result");
+                        vo.SetNextMeetingTime(meetingTime);
                     }
                     else
                     {
@@ -221,7 +221,7 @@ namespace SprintTrackerBasic
         //create task button
         private void button3_Click(object sender, EventArgs e)
         {
-            TaskAbs task = vo.ParseData(taskName, dueDate, desc, assigned, subTask, currState);
+            TaskAbs task = vo.ParseData(taskName, dueDate, desc, assigned, subTask, currState, isUrgent, isMeeting);
             foreach (Issue issue in issues)
             {
                 task.AddIssue(issue);

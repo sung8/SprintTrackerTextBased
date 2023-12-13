@@ -139,7 +139,11 @@ namespace SprintTrackerBasic
 
         private void button2_Click(object sender, EventArgs e)
         {
-
+            if (this.attendees.Count > 0)
+            {
+                vo.AddAttendees(attendees);
+            }
+            this.Close();
         }
     }
 }

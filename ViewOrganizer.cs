@@ -22,6 +22,7 @@ namespace SprintTrackerBasic
         private List<TaskAbs> tasksDone = new List<TaskAbs>();
         private TaskComposite parentOfEdited;
         private List<Users.TeamMember> attendees = new List<Users.TeamMember>();
+        private TimeOnly currMeetingTime;
 
         private ViewOrganizer() { }
 
@@ -56,6 +57,10 @@ namespace SprintTrackerBasic
         {
             attendees.AddRange(tm);
             // clear this after meeting task successfully made
+        }
+        public void SetNextMeetingTime(TimeOnly time)
+        {
+            this.currMeetingTime = time;
         }
 
         public List<TaskAbs> GetAllCurrentTasks()
@@ -151,9 +156,10 @@ namespace SprintTrackerBasic
         private List<TaskAbs> subTask = new List<TaskAbs>();
         */
 
-        //public TaskAbs ParseData(string tn, DateTime dd, string d, List<TeamMember> a, List<TaskAbs> ta, TaskAbs.Category currState, bool isUrgent, bool isMeeting)
-        public TaskAbs ParseData(string tn, DateTime dd, string d, List<TeamMember> a, List<TaskAbs> ta, TaskAbs.Category currState)
+        //public TaskAbs ParseData(string tn, DateTime dd, string d, List<TeamMember> a, List<TaskAbs> ta, TaskAbs.Category currState)
+        public TaskAbs ParseData(string tn, DateTime dd, string d, List<TeamMember> a, List<TaskAbs> ta, TaskAbs.Category currState, bool isUrgent, bool isMeeting)
         {
+            TaskAbs temp;
 
             if (ta.Count == 0)
             {
@@ -166,7 +172,7 @@ namespace SprintTrackerBasic
                  .SetCategory(currState)
                  .Build();
 
-                return task;
+                temp = task;
             }
             else
             {
@@ -179,8 +185,24 @@ namespace SprintTrackerBasic
                  .AddChildren(ta)
                  .SetCategory(currState)
                  .Build();
-                return task;
+                temp = task;
             }
+
+            if (isUrgent && isMeeting)
+            {
+                temp = new UrgentMeetingTaskDecorator(temp, currMeetingTime, attendees);
+
+            }
+            else if (isUrgent)
+            {
+                temp = new UrgentTaskDecorator(temp);
+            }
+            else if (isMeeting)
+            {
+                temp = new SmallMeetingTaskDecorator(temp, currMeetingTime, attendees);
+            }
+            
+            return temp;
         }
 
         /*public TaskAbs handleWrapping(TaskAbs t, string wrapType)
