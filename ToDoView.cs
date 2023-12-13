@@ -74,9 +74,9 @@ namespace SprintTrackerBasic
         public void AddTaskToTreeView(TaskAbs task, TreeNode parentNode = null)
         {
             TreeNode currentNode = new TreeNode(task.GetId() + ": " + task.GetName());
-
+            ViewOrganizer vo = ViewOrganizer.GetInstance();
             // Check if the task is urgent
-            if (task.IsUrgent())
+            if (vo.CheckUrgent(task))
             {
                 currentNode.BackColor = urgentTaskColor; // Set urgent task color
             }
@@ -87,7 +87,6 @@ namespace SprintTrackerBasic
             }
             else
             {
-                ViewOrganizer vo = ViewOrganizer.GetInstance();
                 vo.AddByCategory(task);
                 // Determine which TreeView to add the task based on its Category
                 if (task.GetCategory() == Category.Todo)

@@ -231,7 +231,7 @@ namespace SprintTrackerBasic
             {
                 if (parent == null)
                 {
-                    vo.AddTasks(task);
+                    vo.AddTasks((TaskAbs)task);
 
                     //todoview.AddingTask(task);
                     todoview.AddTaskToTreeView(task);

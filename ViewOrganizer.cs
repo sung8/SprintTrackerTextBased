@@ -23,6 +23,8 @@ namespace SprintTrackerBasic
         private TaskComposite parentOfEdited;
         private List<Users.TeamMember> attendees = new List<Users.TeamMember>();
         private TimeOnly currMeetingTime;
+        private List<TaskDecorator> urgent = new List<TaskDecorator>();
+        private List<TaskDecorator> meeting = new List<TaskDecorator>();
 
         private ViewOrganizer() { }
 
@@ -51,6 +53,30 @@ namespace SprintTrackerBasic
             {
                 tasksDone.Add(task);
             }
+        }
+
+        public bool CheckUrgent(TaskAbs t)
+        {
+            foreach (TaskDecorator d in urgent)
+            {
+                if (d.GetName() == t.GetName() && d.GetId() == t.GetId() && d.GetAssignedMember() == t.GetAssignedMember())
+                {
+                    return true;
+                }
+            }
+            return false;
+        }
+
+        public TaskDecorator GetMeeting(TaskAbs t)
+        {
+            foreach (TaskDecorator d in meeting)
+            {
+                if (d.GetName() == t.GetName() && d.GetId() == t.GetId() && d.GetAssignedMember() == t.GetAssignedMember())
+                {
+                    return d;
+                }
+            }
+            return null;
         }
 
         public void AddAttendees(List<TeamMember> tm)
@@ -187,27 +213,44 @@ namespace SprintTrackerBasic
                  .Build();
                 temp = task;
             }
-
             if (isUrgent && isMeeting)
             {
-                temp = new UrgentMeetingTaskDecorator(temp, currMeetingTime, attendees);
+                handleWrapping(temp, isUrgent);
 
             }
             else if (isUrgent)
             {
-                temp = new UrgentTaskDecorator(temp);
+                handleWrapping(temp);
             }
             else if (isMeeting)
             {
-                temp = new SmallMeetingTaskDecorator(temp, currMeetingTime, attendees);
+                handleWrapping(temp, isUrgent);
             }
-            
             return temp;
         }
 
-        /*public TaskAbs handleWrapping(TaskAbs t, string wrapType)
+        // meeting task wrapper handler
+        public TaskDecorator handleWrapping(TaskAbs t, bool isUrgent)
         {
-            TaskAbs dect = new TaskDecorator();
-        }*/
+            TaskDecorator temp;
+            if (isUrgent)
+            {
+                temp = new UrgentMeetingTaskDecorator(t, currMeetingTime, attendees);
+                urgent.Add(temp);
+                meeting.Add(temp);
+                return temp;
+            }
+            temp = new SmallMeetingTaskDecorator(t, currMeetingTime, attendees);
+            meeting.Add(temp);
+            return temp;
+        }
+
+        // urgent task wrapper handler
+        public TaskDecorator handleWrapping(TaskAbs t)
+        {
+            TaskDecorator temp = new UrgentTaskDecorator(t);
+            urgent.Add(temp);
+            return temp;
+        }
     }
 }

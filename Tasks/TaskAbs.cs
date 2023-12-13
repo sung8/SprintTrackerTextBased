@@ -153,7 +153,7 @@ namespace SprintTrackerBasic.Tasks
             observers.Remove(observer);
         }
 
-        private void NotifyObservers(string attributeName, string updatedValue)
+        public void NotifyObservers(string attributeName, string updatedValue)
         {
             foreach (var observer in observers)
             {
@@ -166,6 +166,10 @@ namespace SprintTrackerBasic.Tasks
         public abstract string Iterate();
 
         public virtual bool IsUrgent()
+        {
+            return false;
+        }
+        public virtual bool IsMeeting()
         {
             return false;
         }

@@ -36,5 +36,10 @@ namespace SprintTrackerBasic.Decorated
         }
 
         public abstract List<TeamMember> GetAttendees();
+
+        public override bool IsMeeting()
+        {
+            return true;
+        }
     }
 }

@@ -29,7 +29,7 @@ namespace SprintTrackerBasic
 
         private void textBox2_TextChanged(object sender, EventArgs e)
         {
-            memberId = int.Parse(textBox2.Text);
+                memberId = int.Parse(textBox2.Text);
         }
 
         private void textBox3_TextChanged(object sender, EventArgs e)
