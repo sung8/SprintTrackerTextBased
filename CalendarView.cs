@@ -13,6 +13,7 @@ namespace SprintTrackerBasic
 {
     public partial class CalendarView : Form
     {
+        private int count = 1;
         Label[] labels = new Label[14];
         Label[] dayLabels = new Label[7];
         TreeView[] trees = new TreeView[14];
@@ -21,10 +22,12 @@ namespace SprintTrackerBasic
         public CalendarView()
         {
             InitializeComponent();
-            foreach(Sprint sprint in vo.GetSprints())
+            foreach (Sprint sprint in vo.GetSprints())
             {
-                listBox1.Items.Add(sprint.GetStringDayIdsAndDates());
+                listBox1.Items.Add("sprint " + count + ": " + sprint.GetStringDayIdsAndDates());
+                count++;
             }
+
         }
 
         private void CalendarView_Load(object sender, EventArgs e)
@@ -58,7 +61,7 @@ namespace SprintTrackerBasic
             }
             foreach (TaskAbs task in vo.GetAllCurrentTasks())
             {
-                AddTaskToTreeView(task);
+                AddTaskToTreeView(task, DateTime.Today);
             }
         }
 
@@ -66,17 +69,17 @@ namespace SprintTrackerBasic
         {
 
         }
-        private void AddTaskToTreeView(TaskAbs task)
+        private void AddTaskToTreeView(TaskAbs task, DateTime startingTime)
         {
             DateTime dueDate = task.GetDueDate();
 
-            int index = (dueDate - DateTime.Today).Days;
+            int index = (dueDate - startingTime).Days;
 
             if (index >= 0 && index < 14)
             {
                 TreeView treeView = GetTreeViewForIndex(index);
 
-                TreeNode taskNode = new TreeNode(task.GetName().ToString());
+                TreeNode taskNode = new TreeNode(task.GetId() + ":"+ task.GetName());
 
                 if (task is TaskComposite taskComposite)
                 {
@@ -91,7 +94,7 @@ namespace SprintTrackerBasic
         {
             foreach (TaskAbs subtask in taskComposite.GetSubtasks())
             {
-                TreeNode subtaskNode = new TreeNode(subtask.GetName().ToString());
+                TreeNode subtaskNode = new TreeNode(subtask.GetId() + ":" + subtask.GetName().ToString());
 
                 if (subtask is TaskComposite nestedComposite)
                 {
@@ -128,7 +131,18 @@ namespace SprintTrackerBasic
         }
         public void AddSprint(Sprint sprint)
         {
-            listBox1.Items.Add(sprint.GetStringDayIdsAndDates());
+            listBox1.Items.Add("sprint " + count + ": " + sprint.GetStringDayIdsAndDates());
+            count++;
+        }
+
+
+
+        private void ClearTreeViews()
+        {
+            foreach (TreeView treeView in trees)
+            {
+                treeView.Nodes.Clear();
+            }
         }
 
 
@@ -140,6 +154,35 @@ namespace SprintTrackerBasic
             this.Enabled = false;
             sc.ShowDialog();
             this.Enabled = true;
+        }
+
+        private void listBox1_SelectedIndexChanged_1(object sender, EventArgs e)
+        {
+            if (listBox1.SelectedIndex != -1)
+            {
+                Sprint selectedSprint = vo.GetSprints()[listBox1.SelectedIndex];
+                ManipulateDateTasks(selectedSprint);
+            }
+        }
+        private void ManipulateDateTasks(Sprint selectedSprint)
+        {
+            DateTime sprintStartDate = selectedSprint.GetStart();
+
+            for (int i = 0; i < 14; i++)
+            {
+                labels[i].Text = sprintStartDate.AddDays(i).ToShortDateString();
+                if (i < 7)
+                {
+                    dayLabels[i].Text = sprintStartDate.AddDays(i).DayOfWeek.ToString();
+                }
+            }
+
+            ClearTreeViews();
+
+            foreach (TaskAbs task in vo.GetAllCurrentTasks())
+            {
+                AddTaskToTreeView(task, sprintStartDate);
+            }
         }
     }
 }

@@ -17,6 +17,11 @@ namespace SprintTrackerBasic.Tasks
             this.CalculateDays();
         }
 
+        public DateTime GetStart()
+        {
+            return startDate;
+        }
+
         private void CalculateDays()
         {
             // Fixed sprint duration of 14 days

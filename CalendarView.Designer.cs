@@ -434,6 +434,7 @@
             listBox1.Name = "listBox1";
             listBox1.Size = new Size(343, 79);
             listBox1.TabIndex = 71;
+            listBox1.SelectedIndexChanged += listBox1_SelectedIndexChanged_1;
             // 
             // CalendarView
             // 

@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "D:\\SWENG 421Projects\\SprintTrackerTextBased\\SprintTrackerBasic.csproj": {}
+    "D:\\bruh\\SprintTrackerTextBased\\SprintTrackerBasic.csproj": {}
   },
   "projects": {
-    "D:\\SWENG 421Projects\\SprintTrackerTextBased\\SprintTrackerBasic.csproj": {
+    "D:\\bruh\\SprintTrackerTextBased\\SprintTrackerBasic.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\SWENG 421Projects\\SprintTrackerTextBased\\SprintTrackerBasic.csproj",
+        "projectUniqueName": "D:\\bruh\\SprintTrackerTextBased\\SprintTrackerBasic.csproj",
         "projectName": "SprintTrackerBasic",
-        "projectPath": "D:\\SWENG 421Projects\\SprintTrackerTextBased\\SprintTrackerBasic.csproj",
+        "projectPath": "D:\\bruh\\SprintTrackerTextBased\\SprintTrackerBasic.csproj",
         "packagesPath": "C:\\Users\\fyrel\\.nuget\\packages\\",
-        "outputPath": "D:\\SWENG 421Projects\\SprintTrackerTextBased\\obj\\",
+        "outputPath": "D:\\bruh\\SprintTrackerTextBased\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\fyrel\\AppData\\Roaming\\NuGet\\NuGet.Config",
