@@ -36,6 +36,7 @@
             button2 = new Button();
             listBox2 = new ListBox();
             label2 = new Label();
+            label3 = new Label();
             SuspendLayout();
             // 
             // textBox3
@@ -83,6 +84,8 @@
             listBox1.Name = "listBox1";
             listBox1.Size = new Size(254, 49);
             listBox1.TabIndex = 64;
+            listBox1.SelectedIndexChanged += listBox1_SelectedIndexChanged;
+            listBox1.MouseDoubleClick += listBox1_MouseDoubleClick_1;
             // 
             // button2
             // 
@@ -95,6 +98,7 @@
             button2.TabIndex = 63;
             button2.Text = "Modify";
             button2.UseVisualStyleBackColor = false;
+            button2.Click += button2_Click;
             // 
             // listBox2
             // 
@@ -112,15 +116,26 @@
             label2.Font = new Font("Segoe UI", 15F, FontStyle.Regular, GraphicsUnit.Point);
             label2.Location = new Point(45, 200);
             label2.Name = "label2";
-            label2.Size = new Size(62, 28);
+            label2.Size = new Size(66, 28);
             label2.TabIndex = 66;
-            label2.Text = "Issues";
+            label2.Text = "Issues:";
+            // 
+            // label3
+            // 
+            label3.AutoSize = true;
+            label3.Font = new Font("Segoe UI", 15F, FontStyle.Regular, GraphicsUnit.Point);
+            label3.Location = new Point(194, 237);
+            label3.Name = "label3";
+            label3.Size = new Size(58, 28);
+            label3.TabIndex = 67;
+            label3.Text = "Subs:";
             // 
             // EditIssue
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(501, 440);
+            Controls.Add(label3);
             Controls.Add(label2);
             Controls.Add(listBox2);
             Controls.Add(listBox1);
@@ -145,5 +160,6 @@
         private Button button2;
         private ListBox listBox2;
         private Label label2;
+        private Label label3;
     }
 }

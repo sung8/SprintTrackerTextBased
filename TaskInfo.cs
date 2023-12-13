@@ -18,6 +18,7 @@ namespace SprintTrackerBasic
     public partial class TaskInfo : Form
     {
         TaskAbs currTask;
+        private static ReaderWriterLockSlim rwLock = new ReaderWriterLockSlim();
         public TaskInfo(TaskAbs task)
         {
             InitializeComponent();
@@ -181,10 +182,18 @@ namespace SprintTrackerBasic
         // Edit
         private void button2_Click(object sender, EventArgs e)
         {
-            TaskEdit editForm = new TaskEdit(currTask, this);
-            this.Enabled = false;
-            editForm.ShowDialog();
-            this.Enabled = true;
+            rwLock.EnterWriteLock();
+            try
+            {
+                TaskEdit editForm = new TaskEdit(currTask, this);
+                this.Enabled = false;
+                editForm.ShowDialog();
+                this.Enabled = true;
+            }
+            finally
+            {
+                rwLock.ExitWriteLock();
+            }
         }
     }
 }

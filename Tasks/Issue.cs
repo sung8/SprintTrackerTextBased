@@ -59,13 +59,13 @@ namespace SprintTrackerBasic.Tasks
         public void SetName(string newName)
         {
             string oldName = this.name; // store the old value for comparison
-            this.name = newName;
 
             // Notify observers about the name change
             if (oldName != newName)
             {
                 NotifyObservers("Name", newName);
             }
+            this.name = newName;
         }
 
         public string GetDesc()

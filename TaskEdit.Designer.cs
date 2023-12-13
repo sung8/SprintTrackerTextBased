@@ -286,7 +286,7 @@
             button3_1.BackColor = Color.DarkOliveGreen;
             button3_1.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
             button3_1.ForeColor = SystemColors.HighlightText;
-            button3_1.Location = new Point(177, 624);
+            button3_1.Location = new Point(171, 656);
             button3_1.Name = "button3_1";
             button3_1.Size = new Size(153, 46);
             button3_1.TabIndex = 46;
@@ -346,9 +346,9 @@
             button1.BackColor = SystemColors.HotTrack;
             button1.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
             button1.ForeColor = SystemColors.ButtonHighlight;
-            button1.Location = new Point(206, 676);
+            button1.Location = new Point(295, 588);
             button1.Name = "button1";
-            button1.Size = new Size(105, 39);
+            button1.Size = new Size(146, 40);
             button1.TabIndex = 47;
             button1.Text = "Issue Edit";
             button1.UseVisualStyleBackColor = false;
