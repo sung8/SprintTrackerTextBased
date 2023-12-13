@@ -25,9 +25,31 @@ namespace SprintTrackerBasic
         private TimeOnly currMeetingTime;
         private List<TaskDecorator> urgent = new List<TaskDecorator>();
         private List<TaskDecorator> meeting = new List<TaskDecorator>();
+        private List<Sprint> sprints = new List<Sprint>();
+
+        private ReaderWriterLockSlim rwLock = new ReaderWriterLockSlim();
 
         private ViewOrganizer() { }
 
+        public void AddSprint(Sprint sprint)
+        {
+            try
+            {
+                rwLock.EnterWriteLock();
+                sprints.Add(sprint);
+            }
+            finally { rwLock.ExitWriteLock(); }
+
+        }
+        public List<Sprint> GetSprints()
+        {
+            try
+            {
+                rwLock.EnterReadLock();
+                return sprints;
+            }
+            finally { rwLock.ExitReadLock(); }
+        }
 
         public static ViewOrganizer GetInstance()
         {
@@ -36,90 +58,169 @@ namespace SprintTrackerBasic
 
         public List<Users.Team> GetTeams()
         {
-            return teams;
+            try
+            {
+                rwLock.EnterReadLock();
+                return teams;
+            }
+            finally
+            {
+                rwLock.ExitReadLock();
+            }
         }
         public void AddByCategory(TaskAbs task)
         {
-            if (task.GetCategory() == TaskAbs.Category.Todo)
+            try
             {
-                tasksTodo.Add(task);
-            }
+                rwLock.EnterWriteLock();
+                if (task.GetCategory() == TaskAbs.Category.Todo)
+                {
+                    tasksTodo.Add(task);
+                }
 
-            else if (task.GetCategory() == TaskAbs.Category.Doing)
-            {
-                tasksDoing.Add(task);
+                else if (task.GetCategory() == TaskAbs.Category.Doing)
+                {
+                    tasksDoing.Add(task);
+                }
+                else if (task.GetCategory() == TaskAbs.Category.Done)
+                {
+                    tasksDone.Add(task);
+                }
             }
-            else if (task.GetCategory() == TaskAbs.Category.Done)
+            finally
             {
-                tasksDone.Add(task);
+                rwLock.ExitWriteLock();
             }
         }
 
         public bool CheckUrgent(TaskAbs t)
         {
-            foreach (TaskDecorator d in urgent)
+            try
             {
-                if (d.GetName() == t.GetName() && d.GetId() == t.GetId() && d.GetAssignedMember() == t.GetAssignedMember())
+                rwLock.EnterReadLock();
+                foreach (TaskDecorator d in urgent)
                 {
-                    return true;
+                    if (d.GetName() == t.GetName() && d.GetId() == t.GetId() && d.GetAssignedMember() == t.GetAssignedMember())
+                    {
+                        return true;
+                    }
                 }
+                return false;
             }
-            return false;
+            finally {
+                rwLock.ExitReadLock();
+            }
         }
 
         public TaskDecorator GetMeeting(TaskAbs t)
         {
-            foreach (TaskDecorator d in meeting)
+            try
             {
-                if (d.GetName() == t.GetName() && d.GetId() == t.GetId() && d.GetAssignedMember() == t.GetAssignedMember())
+                rwLock.EnterReadLock();
+
+                foreach (TaskDecorator d in meeting)
                 {
-                    return d;
+                    if (d.GetName() == t.GetName() && d.GetId() == t.GetId() && d.GetAssignedMember() == t.GetAssignedMember())
+                    {
+                        return d;
+                    }
                 }
+                return null;
             }
-            return null;
+            finally { 
+                rwLock.ExitReadLock(); 
+            }
         }
 
         public void AddAttendees(List<TeamMember> tm)
         {
-            attendees.AddRange(tm);
+            try
+            {
+                rwLock.EnterWriteLock();
+                attendees.AddRange(tm);
+            }
+            finally { 
+                rwLock.ExitWriteLock(); 
+            }
             // clear this after meeting task successfully made
         }
         public void SetNextMeetingTime(TimeOnly time)
         {
-            this.currMeetingTime = time;
+            try
+            {
+                rwLock.EnterWriteLock();
+                this.currMeetingTime = time;
+            }
+            finally
+            {
+                rwLock.ExitWriteLock();
+            }
+
         }
 
         public List<TaskAbs> GetAllCurrentTasks()
         {
-            return allTasks;
+            try
+            {
+                rwLock.EnterReadLock();
+                return allTasks;
+            }
+            finally
+            {
+                rwLock.ExitReadLock();
+            }
         }
         public void AddTasks(TaskAbs t)
         {
-            allTasks.Add(t);
+            try
+            {
+                rwLock.EnterWriteLock();
+                allTasks.Add(t);
+            }
+            finally
+            {
+                rwLock.ExitWriteLock();
+            }
         }
 
         public TaskAbs FindTaskById(int id)
         {
-            //return allTasks.FirstOrDefault(task => task.GetId() == id);
-            return FindTaskByIdRecursive(allTasks, id);
+            try
+            {
+                rwLock.EnterReadLock();
+                //return allTasks.FirstOrDefault(task => task.GetId() == id);
+                return FindTaskByIdRecursive(allTasks, id);
+            }
+            finally
+            {
+                rwLock.ExitReadLock();
+            }
         }
 
         public TeamMember FindTeamMember(int memberId, string memberName, string teamName)
         {
-            foreach (Team team in teams)
+            try
             {
-                foreach (TeamMember teamMember in team.GetTeamMembers())
+                rwLock.EnterReadLock();
+                foreach (Team team in teams)
                 {
-                    if (teamMember.GetId() == memberId &&
-                        teamMember.GetName() == memberName &&
-                        team.GetName() == teamName)
+                    foreach (TeamMember teamMember in team.GetTeamMembers())
                     {
-                        return teamMember; // Found a matching TeamMember
+                        if (teamMember.GetId() == memberId &&
+                            teamMember.GetName() == memberName &&
+                            team.GetName() == teamName)
+                        {
+                            return teamMember; // Found a matching TeamMember
+                        }
                     }
                 }
-            }
 
-            return null; // No matching TeamMember found
+                return null; // No matching TeamMember found
+            }
+            finally
+            {
+                rwLock.ExitReadLock();
+            }
             /*TeamMember foundTeamMember = assigned.Find(tm =>
                 tm.GetId() == memberId &&
                 tm.GetName() == memberName &&
@@ -136,6 +237,7 @@ namespace SprintTrackerBasic
         //allowing for subtask info view
         private TaskAbs FindTaskByIdRecursive(IEnumerable<TaskAbs> tasks, int id, TaskComposite parent = null)
         {
+            
             foreach (var task in tasks)
             {
                 if (task.GetId() == id)
@@ -159,11 +261,26 @@ namespace SprintTrackerBasic
 
         public TaskComposite GetParentEdited()
         {
-            return parentOfEdited;
+            try
+            {
+                rwLock.EnterReadLock();
+                return parentOfEdited;
+            }
+            finally { 
+                rwLock.ExitReadLock();
+            }
         }
         public void SetParentEdited()
         {
-            parentOfEdited = null;
+            try
+            {
+                rwLock.EnterWriteLock();
+                parentOfEdited = null;
+            }
+            finally
+            {
+                rwLock.ExitWriteLock();
+            }
         }
 
         /*public void SortTodoViewTasks()
@@ -185,48 +302,56 @@ namespace SprintTrackerBasic
         //public TaskAbs ParseData(string tn, DateTime dd, string d, List<TeamMember> a, List<TaskAbs> ta, TaskAbs.Category currState)
         public TaskAbs ParseData(string tn, DateTime dd, string d, List<TeamMember> a, List<TaskAbs> ta, TaskAbs.Category currState, bool isUrgent, bool isMeeting)
         {
-            TaskAbs temp;
+            try
+            {
+                rwLock.EnterReadLock();
+                TaskAbs temp;
 
-            if (ta.Count == 0)
-            {
-                TaskBuilderIF tb = TaskBuilderAbs.GetTaskBuilder("task");
-                var task = tb
-                 .SetTaskName(tn)
-                 .SetDueDate(dd)
-                 .SetDescription(d)
-                 .AddAssignedTeamMember(a)
-                 .SetCategory(currState)
-                 .Build();
+                if (ta.Count == 0)
+                {
+                    TaskBuilderIF tb = TaskBuilderAbs.GetTaskBuilder("task");
+                    var task = tb
+                     .SetTaskName(tn)
+                     .SetDueDate(dd)
+                     .SetDescription(d)
+                     .AddAssignedTeamMember(a)
+                     .SetCategory(currState)
+                     .Build();
 
-                temp = task;
-            }
-            else
-            {
-                TaskBuilderIF tb = TaskBuilderAbs.GetTaskBuilder("composite");
-                var task = tb
-                 .SetTaskName(tn)
-                 .SetDueDate(dd)
-                 .SetDescription(d)
-                 .AddAssignedTeamMember(a)
-                 .AddChildren(ta)
-                 .SetCategory(currState)
-                 .Build();
-                temp = task;
-            }
-            if (isUrgent && isMeeting)
-            {
-                handleWrapping(temp, isUrgent);
+                    temp = task;
+                }
+                else
+                {
+                    TaskBuilderIF tb = TaskBuilderAbs.GetTaskBuilder("composite");
+                    var task = tb
+                     .SetTaskName(tn)
+                     .SetDueDate(dd)
+                     .SetDescription(d)
+                     .AddAssignedTeamMember(a)
+                     .AddChildren(ta)
+                     .SetCategory(currState)
+                     .Build();
+                    temp = task;
+                }
+                if (isUrgent && isMeeting)
+                {
+                    handleWrapping(temp, isUrgent);
 
+                }
+                else if (isUrgent)
+                {
+                    handleWrapping(temp);
+                }
+                else if (isMeeting)
+                {
+                    handleWrapping(temp, isUrgent);
+                }
+                return temp;
             }
-            else if (isUrgent)
+            finally
             {
-                handleWrapping(temp);
+                rwLock.ExitReadLock();
             }
-            else if (isMeeting)
-            {
-                handleWrapping(temp, isUrgent);
-            }
-            return temp;
         }
 
         // meeting task wrapper handler

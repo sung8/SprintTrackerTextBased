@@ -54,6 +54,7 @@
             button1_1 = new Button();
             label6 = new Label();
             label5 = new Label();
+            button1 = new Button();
             groupBox3.SuspendLayout();
             groupBox2.SuspendLayout();
             groupBox1.SuspendLayout();
@@ -285,7 +286,7 @@
             button3_1.BackColor = Color.DarkOliveGreen;
             button3_1.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
             button3_1.ForeColor = SystemColors.HighlightText;
-            button3_1.Location = new Point(188, 623);
+            button3_1.Location = new Point(177, 624);
             button3_1.Name = "button3_1";
             button3_1.Size = new Size(153, 46);
             button3_1.TabIndex = 46;
@@ -340,11 +341,25 @@
             label5.TabIndex = 42;
             label5.Text = "Subtasks: ";
             // 
+            // button1
+            // 
+            button1.BackColor = SystemColors.HotTrack;
+            button1.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            button1.ForeColor = SystemColors.ButtonHighlight;
+            button1.Location = new Point(206, 676);
+            button1.Name = "button1";
+            button1.Size = new Size(105, 39);
+            button1.TabIndex = 47;
+            button1.Text = "Issue Edit";
+            button1.UseVisualStyleBackColor = false;
+            button1.Click += button1_Click;
+            // 
             // TaskEdit
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(506, 727);
+            Controls.Add(button1);
             Controls.Add(button3_1);
             Controls.Add(button2_1);
             Controls.Add(button1_1);
@@ -405,5 +420,6 @@
         private Button button1_1;
         private Label label6;
         private Label label5;
+        private Button button1;
     }
 }

@@ -26,6 +26,10 @@ namespace SprintTrackerBasic.Tasks
         private TaskAbs parentTask;
         private List<IssueObserverIF> subscribers = new List<IssueObserverIF>();
 
+        public List<IssueObserverIF> GetSubs()
+        {
+            return subscribers; 
+        }
 
         public Issue(string title, string desc, Status status, TaskAbs task)
         {

@@ -302,5 +302,13 @@ namespace SprintTrackerBasic
         {
             return subTask;
         }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            EditIssue ei = new EditIssue(taskToEdit);
+            this.Enabled = false;
+            ei.ShowDialog();
+            this.Enabled = true;
+        }
     }
 }

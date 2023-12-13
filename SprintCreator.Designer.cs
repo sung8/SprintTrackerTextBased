@@ -1,0 +1,101 @@
+﻿namespace SprintTrackerBasic
+{
+    partial class SprintCreator
+    {
+        /// <summary>
+        /// Required designer variable.
+        /// </summary>
+        private System.ComponentModel.IContainer components = null;
+
+        /// <summary>
+        /// Clean up any resources being used.
+        /// </summary>
+        /// <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        protected override void Dispose(bool disposing)
+        {
+            if (disposing && (components != null))
+            {
+                components.Dispose();
+            }
+            base.Dispose(disposing);
+        }
+
+        #region Windows Form Designer generated code
+
+        /// <summary>
+        /// Required method for Designer support - do not modify
+        /// the contents of this method with the code editor.
+        /// </summary>
+        private void InitializeComponent()
+        {
+            button1 = new Button();
+            label17 = new Label();
+            label1 = new Label();
+            comboBox2 = new ComboBox();
+            SuspendLayout();
+            // 
+            // button1
+            // 
+            button1.BackColor = SystemColors.ActiveCaptionText;
+            button1.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            button1.ForeColor = SystemColors.HighlightText;
+            button1.Location = new Point(133, 208);
+            button1.Name = "button1";
+            button1.Size = new Size(113, 46);
+            button1.TabIndex = 3;
+            button1.Text = "Create Sprint";
+            button1.UseVisualStyleBackColor = false;
+            button1.Click += button1_Click;
+            // 
+            // label17
+            // 
+            label17.AutoSize = true;
+            label17.Font = new Font("Segoe UI", 15F, FontStyle.Regular, GraphicsUnit.Point);
+            label17.Location = new Point(105, 36);
+            label17.Name = "label17";
+            label17.Size = new Size(200, 28);
+            label17.TabIndex = 52;
+            label17.Text = "Add Two Week Sprint";
+            // 
+            // label1
+            // 
+            label1.AutoSize = true;
+            label1.Font = new Font("Segoe UI", 15F, FontStyle.Regular, GraphicsUnit.Point);
+            label1.Location = new Point(12, 113);
+            label1.Name = "label1";
+            label1.Size = new Size(103, 28);
+            label1.TabIndex = 53;
+            label1.Text = "Start Date:";
+            // 
+            // comboBox2
+            // 
+            comboBox2.FormattingEnabled = true;
+            comboBox2.Location = new Point(133, 118);
+            comboBox2.Name = "comboBox2";
+            comboBox2.Size = new Size(219, 23);
+            comboBox2.TabIndex = 54;
+            comboBox2.SelectedIndexChanged += comboBox2_SelectedIndexChanged;
+            // 
+            // SprintCreator
+            // 
+            AutoScaleDimensions = new SizeF(7F, 15F);
+            AutoScaleMode = AutoScaleMode.Font;
+            ClientSize = new Size(379, 315);
+            Controls.Add(comboBox2);
+            Controls.Add(label1);
+            Controls.Add(label17);
+            Controls.Add(button1);
+            Name = "SprintCreator";
+            Text = "SprintCreator";
+            ResumeLayout(false);
+            PerformLayout();
+        }
+
+        #endregion
+
+        private Button button1;
+        private Label label17;
+        private Label label1;
+        private ComboBox comboBox2;
+    }
+}
