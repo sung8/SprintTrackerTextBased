@@ -226,6 +226,11 @@ namespace SprintTrackerBasic
 
         private void ToDoView_VisibleChanged(object sender, EventArgs e)
         {
+            TodoRefresh();
+        }
+
+        public void TodoRefresh()
+        {
             ClearTrees();
             ViewOrganizer vo = ViewOrganizer.GetInstance();
 
@@ -236,12 +241,16 @@ namespace SprintTrackerBasic
                 this.AddTaskToTreeView(t);
             }
         }
-
         private void ClearTrees()
         {
             treeView1.Nodes.Clear();
             treeView2.Nodes.Clear();
             treeView3.Nodes.Clear();
+        }
+
+        private void button5_Click(object sender, EventArgs e)
+        {
+            TodoRefresh();
         }
     }
 }

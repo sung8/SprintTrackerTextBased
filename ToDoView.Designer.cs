@@ -39,6 +39,7 @@
             treeView3 = new TreeView();
             button4 = new Button();
             label4 = new Label();
+            button5 = new Button();
             SuspendLayout();
             // 
             // button1
@@ -46,7 +47,7 @@
             button1.BackColor = SystemColors.ActiveCaptionText;
             button1.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
             button1.ForeColor = SystemColors.HighlightText;
-            button1.Location = new Point(31, 21);
+            button1.Location = new Point(162, 21);
             button1.Name = "button1";
             button1.Size = new Size(113, 46);
             button1.TabIndex = 0;
@@ -59,7 +60,7 @@
             button2.BackColor = SystemColors.Highlight;
             button2.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
             button2.ForeColor = SystemColors.HighlightText;
-            button2.Location = new Point(610, 21);
+            button2.Location = new Point(31, 21);
             button2.Name = "button2";
             button2.Size = new Size(113, 46);
             button2.TabIndex = 1;
@@ -102,7 +103,7 @@
             button3.BackColor = SystemColors.ActiveCaptionText;
             button3.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
             button3.ForeColor = SystemColors.HighlightText;
-            button3.Location = new Point(177, 21);
+            button3.Location = new Point(658, 21);
             button3.Name = "button3";
             button3.Size = new Size(113, 46);
             button3.TabIndex = 9;
@@ -112,6 +113,7 @@
             // 
             // treeView1
             // 
+            treeView1.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
             treeView1.Location = new Point(31, 172);
             treeView1.Name = "treeView1";
             treeView1.Size = new Size(208, 259);
@@ -120,6 +122,7 @@
             // 
             // treeView2
             // 
+            treeView2.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
             treeView2.Location = new Point(297, 172);
             treeView2.Name = "treeView2";
             treeView2.Size = new Size(208, 259);
@@ -128,6 +131,7 @@
             // 
             // treeView3
             // 
+            treeView3.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
             treeView3.Location = new Point(563, 172);
             treeView3.Name = "treeView3";
             treeView3.Size = new Size(208, 259);
@@ -139,7 +143,7 @@
             button4.BackColor = SystemColors.WindowFrame;
             button4.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
             button4.ForeColor = SystemColors.HighlightText;
-            button4.Location = new Point(369, 21);
+            button4.Location = new Point(318, 21);
             button4.Name = "button4";
             button4.Size = new Size(136, 46);
             button4.TabIndex = 13;
@@ -155,11 +159,25 @@
             label4.Size = new Size(0, 15);
             label4.TabIndex = 14;
             // 
+            // button5
+            // 
+            button5.BackColor = Color.White;
+            button5.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point);
+            button5.ForeColor = SystemColors.ActiveCaptionText;
+            button5.Location = new Point(486, 21);
+            button5.Name = "button5";
+            button5.Size = new Size(136, 46);
+            button5.TabIndex = 15;
+            button5.Text = "Refresh";
+            button5.UseVisualStyleBackColor = false;
+            button5.Click += button5_Click;
+            // 
             // ToDoView
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(800, 450);
+            ClientSize = new Size(800, 466);
+            Controls.Add(button5);
             Controls.Add(label4);
             Controls.Add(button4);
             Controls.Add(treeView3);
@@ -192,5 +210,6 @@
         private TreeView treeView3;
         private Button button4;
         private Label label4;
+        private Button button5;
     }
 }

@@ -42,8 +42,8 @@ namespace SprintTrackerBasic
             info.Add("Category: " + ((TaskAbs)currTask).GetCategory().ToString());
             info.Add("Complete By: " + ((TaskAbs)currTask).GetDueDate().ToShortDateString());
             //info.Add("Description: " + ((TaskAbs)currTask).GetDesc());
-            string s = WrapText(((TaskAbs)currTask).GetDesc(), this.Width-20);
-            info.Add("Description: " + s);
+            //string s = WrapText(((TaskAbs)currTask).GetDesc(), this.Width-20);
+            info.Add("Description: " + ((TaskAbs)currTask).GetDesc());
             info.Add(" ");
 
             if (currTask is TaskComposite)
@@ -148,10 +148,10 @@ namespace SprintTrackerBasic
             string nodeId = $" {task.GetId()}\n {task.GetName()} ";
             graph.AddNode(nodeId);
 
-            List<TaskComponent> temp = task.GetSubtasks();
+            List<TaskAbs> temp = task.GetSubtasks();
 
             // Recursively add child tasks
-            foreach (TaskComponent childTask in temp)
+            foreach (TaskAbs childTask in temp)
             {
                 // Add edge between parent and child
                 string childNodeId = $" {childTask.GetId()}\n {childTask.GetName()} ";
