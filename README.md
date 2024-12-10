@@ -5,4 +5,5 @@ Effective agile project management is crucial for success, but current tools oft
 
 I. What problems are solved? 
 The tool consolidates sprint planning and issue tracking, enabling agile teams to coordinate efficiently. Users can break down tasks hierarchically and assign priority levels while logging any blocking issues. Users can also log any blocking issues like bugs, conflicts, or bottlenecks to specific tasks, then alert teammates based on task assignment. Within the 2-week sprint timeline, our integrated planner allows task decomposition, priority tracking, management, and targeted notifications to resolve issues faster. Team members assigned to a task can add issues and alert relevant colleagues. Configurable workflows and permissions accommodate different team dynamics and processes. By combining task order visualization, priority tracking, planning, and actionable alerts, our tool aims to optimize agile collaboration.
+
 ![Screenshot 2024-10-01 165640](https://github.com/user-attachments/assets/8c8e74fd-c29a-42da-8b7c-f87098748fc3)
